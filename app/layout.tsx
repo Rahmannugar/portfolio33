@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { LoadingProvider } from "@/components/Loader/LoadingProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -54,10 +55,12 @@ export default function RootLayout({
           `}
         </script>
       </head>
-      <body className={` antialiased`}>
-        {children}
-        <SpeedInsights />
-        <Analytics />
+      <body className={`antialiased`}>
+        <LoadingProvider>
+          {children}
+          <SpeedInsights />
+          <Analytics />
+        </LoadingProvider>
       </body>
     </html>
   );
