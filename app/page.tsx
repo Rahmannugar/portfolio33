@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div>
+    <main>
       Home
       <Link href="/blog">Go to Blog</Link>
-    </div>
+    </main>
   );
 };
 export default Home;
