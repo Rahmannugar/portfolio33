@@ -3,6 +3,13 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { LoadingProvider } from "@/components/Loader/LoadingProvider";
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -55,7 +62,7 @@ export default function RootLayout({
           `}
         </script>
       </head>
-      <body className={`antialiased`}>
+      <body className={`${spaceGrotesk.className} antialiased`}>
         <LoadingProvider>
           {children}
           <SpeedInsights />
