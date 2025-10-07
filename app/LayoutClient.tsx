@@ -6,7 +6,7 @@ import { PropsWithChildren } from "react";
 
 const LayoutClient = ({ children }: PropsWithChildren) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-hidden">
       <Navbar />
       <main className="flex-grow px-7 md:px-12 max-w-7xl mx-auto">
         {children}

@@ -106,7 +106,7 @@ const Hero = () => {
             href="https://docs.google.com/document/d/1ibsZ8pXdPh5WeA22O7mXJTckm9-3OWxYASYGmaO8f68"
             target="_blank"
           >
-            <button className="cursor-pointer bg-white py-3 px-6 rounded-full text-lg font-semibold text-black">
+            <button className="cursor-pointer bg-white py-2 px-5 rounded-full text-lg font-semibold text-black">
               View Resume
             </button>
           </motion.a>
