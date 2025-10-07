@@ -1,10 +1,11 @@
 import Hero from "@/components/sections/Hero";
-import Link from "next/link";
+import Profile from "@/components/sections/Profile";
 
 const Home = () => {
   return (
     <main>
       <Hero />
+      <Profile />
     </main>
   );
 };

@@ -8,7 +8,7 @@ const LayoutClient = ({ children }: PropsWithChildren) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow px-7 md:px-12">{children}</main>
+      <main className="flex-grow px-7 md:px-12 max-w-[1500px] mx-auto">{children}</main>
       <Footer />
     </div>
   );
