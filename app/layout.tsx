@@ -4,8 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { LoadingProvider } from "@/components/Loader/LoadingProvider";
 import { Space_Grotesk } from "next/font/google";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
 import LayoutClient from "./LayoutClient";
 import Background from "@/components/custom-ui/background";
 

@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <nav className="w-[90%] lg:w-full flex items-center justify-between py-1 left-1/2 -translate-x-1/2 px-5 md:px-10 absolute top-7 mx-auto bg-white/30 backdrop-blur-[5px] border border-white/20 rounded-full max-w-7xl">
+      <nav className="w-[90%] flex items-center justify-between py-1 left-1/2 -translate-x-1/2 px-5 md:px-10 absolute top-7 mx-auto bg-white/30 backdrop-blur-[5px] border border-white/20 rounded-full max-w-7xl">
         <Link href="/">
           <motion.div
             className="flex-shrink-0"
@@ -134,7 +134,7 @@ const Navbar = () => {
               onClick={closeMenu}
             />
             <motion.div
-              className="fixed top-0 left-0 h-full w-[70%] bg-purple-200 p-8 z-40 md:hidden overflow-y-auto"
+              className="fixed top-0 left-0 h-full w-[70%] bg-purple-400 p-8 z-40 md:hidden overflow-y-auto"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}

@@ -1,21 +1,73 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import ProfileCard from "../custom-ui/profile-card/profile-card";
+import { useRef } from "react";
+
+const heroText = "Hi, I am Adenuga";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const letterVariants = {
+  hidden: { y: 0, scale: 1, opacity: 0 },
+  visible: {
+    y: [-10, 0],
+    scale: [1.2, 1],
+    opacity: 1,
+    transition: {
+      y: { type: "spring", stiffness: 500, damping: 20 },
+      scale: { type: "spring", stiffness: 500, damping: 20 },
+      opacity: { duration: 0.15 },
+      duration: 0.4,
+    },
+  },
+};
 
 export const handleContactClick = () => {
   window.location.href = "/#contact";
 };
 
 const Hero = () => {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(h1Ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="relative z-10 flex justify-between gap-10 items-start pt-40 lg:pt-48">
+    <section
+      id="hero"
+      className="relative z-10 flex justify-between gap-10 items-start pt-40 lg:pt-48"
+    >
       <div className="space-y-6">
-        <h1 className="text-5xl font-bold text-purple-300 uppercase">
-          Hi, I am Adenuga
-        </h1>
+        <motion.h1
+          ref={h1Ref}
+          className="text-5xl font-bold text-purple-300 uppercase max-w-[220px] sm:max-w-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {heroText.split("").map((char, i) => (
+            <motion.span
+              key={i}
+              variants={letterVariants}
+              className="inline-block"
+              style={{
+                display: char === " " ? "inline-block" : undefined,
+                minWidth: char === " " ? "0.5em" : undefined,
+              }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h1>
 
         <div className="max-w-3xl h-[150px] md:h-[70px] w-[300px] md:w-[600px] lg:w-3xl text-lg lg:text-xl">
           <Typewriter
@@ -61,7 +113,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="hidden lg:block lg:mt-[-40px]">
+      <div className="hidden lg:block lg:mt-[-40px] lg:pr-12 2xl:pr-0">
         <ProfileCard
           name="Adenuga Abdulrahmon"
           title="Frontend Engineer"
