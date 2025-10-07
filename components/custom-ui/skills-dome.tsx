@@ -104,6 +104,10 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "PostgreSQL",
   },
   {
+    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759855642/supabase_jihcnb.svg",
+    alt: "Supabase",
+  },
+  {
     src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853731/vitest_ghzgkn.svg",
     alt: "Vitest",
   },
@@ -668,9 +672,11 @@ export default function DomeGallery({
     openingRef.current = true;
     openStartedAtRef.current = performance.now();
     lockScroll();
+
     const parent = el.parentElement as HTMLElement;
     focusedElRef.current = el;
     el.setAttribute("data-focused", "true");
+
     const offsetX = getDataNumber(parent, "offsetX", 0);
     const offsetY = getDataNumber(parent, "offsetY", 0);
     const sizeX = getDataNumber(parent, "sizeX", 2);
@@ -706,21 +712,75 @@ export default function DomeGallery({
     (el.style as any).zIndex = 0;
     const overlay = document.createElement("div");
     overlay.className = "enlarge";
-    overlay.style.cssText = `position:absolute; left:${frameR.left - mainR.left}px; top:${frameR.top - mainR.top}px; width:${frameR.width}px; height:${frameR.height}px; opacity:0; z-index:30; will-change:transform,opacity; transform-origin:top left; transition:transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease; border-radius:${openedImageBorderRadius}; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35);`;
+    overlay.style.cssText = `
+      position: absolute;
+      left: ${frameR.left - mainR.left}px;
+      top: ${frameR.top - mainR.top}px;
+      width: ${frameR.width}px;
+      height: ${frameR.height}px;
+      opacity: 0;
+      z-index: 30;
+      will-change: transform,opacity;
+      transform-origin: top left;
+      transition: transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease;
+      border-radius: ${openedImageBorderRadius};
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    `;
+
+    const imgContainer = document.createElement("div");
+    imgContainer.style.cssText = `
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 20px;
+    `;
+
+    const img = document.createElement("img");
     const rawSrc =
       parent.dataset.src ||
       (el.querySelector("img") as HTMLImageElement)?.src ||
       "";
-    const rawAlt =
-      parent.dataset.alt ||
-      (el.querySelector("img") as HTMLImageElement)?.alt ||
-      "";
-    const img = document.createElement("img");
+    const rawAlt = (el.querySelector("img") as HTMLImageElement)?.alt || "";
+
     img.src = rawSrc;
     img.alt = rawAlt;
-    img.style.cssText = `width:100%; height:100%; object-fit:cover; filter:${grayscale ? "grayscale(1)" : "none"};`;
-    overlay.appendChild(img);
+    img.style.cssText = `
+      max-width: 100%;
+      max-height: 80%;
+      object-fit: contain;
+      filter: ${grayscale ? "grayscale(1)" : "none"};
+    `;
+
+    const altText = document.createElement("div");
+    altText.textContent = rawAlt;
+    altText.style.cssText = `
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: auto;
+      padding: 12px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+    `;
+
+    imgContainer.appendChild(img);
+    imgContainer.appendChild(altText);
+    overlay.appendChild(imgContainer);
     viewerRef.current!.appendChild(overlay);
+
     const tx0 = tileR.left - frameR.left;
     const ty0 = tileR.top - frameR.top;
     const sx0 = tileR.width / frameR.width;
@@ -858,12 +918,30 @@ export default function DomeGallery({
       pointer-events: auto;
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
-      /* Remove grayscale filter from here if present */
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px;
     }
-    .item__image--reference {
-      position: absolute;
-      inset: 10px;
-      pointer-events: none;
+
+    .item__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .item__image:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .item__image:hover img {
+      transform: scale(1.1);
+    }
+
+    .sphere-item {
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     }
   `;
 
