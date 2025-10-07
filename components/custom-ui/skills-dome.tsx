@@ -92,9 +92,8 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "Firebase",
   },
   {
-    src: "MongoDB",
-    alt: "https://res.cloudinary.com/thirtythree/image/upload/v1759853734/mongodb_bbzoc4.svg",
-  },
+    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853734/mongodb_bbzoc4.svg",
+    alt: "MongoDB"
   {
     src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853731/sqlite_r8kanv.svg",
     alt: "SQLite",
