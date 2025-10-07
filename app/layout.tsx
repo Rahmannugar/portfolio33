@@ -4,9 +4,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { LoadingProvider } from "@/components/Loader/LoadingProvider";
 import { Space_Grotesk } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/sections/Navbar";
+import Footer from "@/components/sections/Footer";
 import LayoutClient from "./LayoutClient";
+import Background from "@/components/custom-ui/background";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -59,13 +60,14 @@ export default function RootLayout({
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);
             gtag('js', new Date());
             gtag('config', 'G-HH07HBY3GB');
           `}
         </script>
       </head>
       <body className={`${spaceGrotesk.className} antialiased`}>
+        <Background />
         <LoadingProvider>
           <LayoutClient>{children}</LayoutClient>
           <SpeedInsights />

@@ -1,10 +1,10 @@
+import Hero from "@/components/sections/Hero";
 import Link from "next/link";
 
 const Home = () => {
   return (
     <main>
-      Home
-      <Link href="/blog">Go to Blog</Link>
+      <Hero />
     </main>
   );
 };

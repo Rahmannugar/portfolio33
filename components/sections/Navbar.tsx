@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import BlurText from "./custom-ui/blur-text";
+import BlurText from "../custom-ui/blur-text";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 
 const menuItems = [
   { label: "Experience", link: "/#experience" },
@@ -12,10 +17,26 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { label: "Email", link: "mailto:cladeadenugar@gmail.com" },
-  { label: "GitHub", link: "https://github.com/rahmannugar" },
-  { label: "LinkedIn", link: "https://linkedin.com/in/rahmannugar" },
-  { label: "Twitter", link: "https://twitter.com/NugarRahman" },
+  {
+    label: "Email",
+    icon: <MdEmail size={30} />,
+    link: "mailto:cladeadenugar@gmail.com",
+  },
+  {
+    label: "GitHub",
+    icon: <FaGithub size={30} />,
+    link: "https://github.com/rahmannugar",
+  },
+  {
+    label: "LinkedIn",
+    icon: <FaLinkedin size={30} />,
+    link: "https://linkedin.com/in/rahmannugar",
+  },
+  {
+    label: "Twitter",
+    icon: <FaSquareXTwitter size={30} />,
+    link: "https://twitter.com/NugarRahman",
+  },
 ];
 
 const Navbar = () => {
@@ -25,7 +46,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <nav className="w-[90%] lg:w-full flex items-center justify-between py-1 left-1/2 -translate-x-1/2 px-5 md:px-10 absolute top-7 mx-auto bg-white/10 backdrop-blur-[5px] border border-white/20 rounded-full max-w-7xl">
+      <nav className="w-[90%] lg:w-full flex items-center justify-between py-1 left-1/2 -translate-x-1/2 px-5 md:px-10 absolute top-7 mx-auto bg-white/30 backdrop-blur-[5px] border border-white/20 rounded-full max-w-7xl">
         <Link href="/">
           <motion.div
             className="flex-shrink-0"
@@ -111,22 +132,9 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-            />{" "}
-            {/* Animated panels */}
-            <motion.div
-              className="fixed top-0 left-0 h-full w-[70%] bg-blue-300 z-30 md:hidden"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 200,
-                delay: 0.1, // Increased from 0.05
-              }}
             />
             <motion.div
-              className="fixed top-0 left-0 h-full w-[70%] bg-purple-300 z-30 md:hidden"
+              className="fixed top-0 left-0 h-full w-[70%] bg-purple-200 p-8 z-40 md:hidden overflow-y-auto"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -134,22 +142,9 @@ const Navbar = () => {
                 type: "spring",
                 damping: 25,
                 stiffness: 200,
-                delay: 0.2, // Increased from 0.1
-              }}
-            />{" "}
-            <motion.div
-              className="fixed top-0 left-0 h-full w-[70%] bg-white p-8 z-40 md:hidden overflow-y-auto"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 200,
-                delay: 0.3, // Increased from 0.15
               }}
             >
-              <div className="mt-16 space-y-16">
+              <div className="mt-16 space-y-20">
                 <ul className="space-y-6">
                   {menuItems.map((item, index) => (
                     <motion.li
@@ -157,10 +152,10 @@ const Navbar = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 0.6 + index * 0.08, // Increased from 0.4 and 0.05
-                        duration: 0.25, // Increased from 0.2
+                        delay: 0.2 + index * 0.1,
+                        duration: 0.3,
                       }}
-                      className="text-2xl uppercase font-bold"
+                      className="text-3xl uppercase font-bold"
                     >
                       <Link
                         href={item.link}
@@ -175,34 +170,34 @@ const Navbar = () => {
 
                 <div>
                   <motion.h3
-                    className="text-blue-400 font-bold mb-4"
+                    className="text-white font-bold mb-4"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
-                      delay: 0.6 + menuItems.length * 0.08, // Adjusted to match new timing
-                      duration: 0.25,
+                      delay: 0.1 + menuItems.length * 0.1,
+                      duration: 0.3,
                     }}
                   >
                     Socials
                   </motion.h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="flex space-x-6">
                     {socialItems.map((item, index) => (
                       <motion.span
                         key={item.label}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{
-                          delay: 0.6 + (menuItems.length + 1 + index) * 0.08, // Adjusted to match new timing
-                          duration: 0.25,
+                          delay: (menuItems.length + 1 + index) * 0.1,
+                          duration: 0.3,
                         }}
                       >
                         <Link
                           href={item.link}
                           target="_blank"
                           onClick={closeMenu}
-                          className="text-black"
+                          className="text-black block"
                         >
-                          {item.label}
+                          {item.icon}
                         </Link>
                       </motion.span>
                     ))}
