@@ -21,7 +21,7 @@ const Skills = ({ skills }: SkillsProps) => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative mt-40 h-[4000px]" id="skills">
+    <section ref={sectionRef} className="relative mt-40" id="skills">
       <div className="flex justify-end w-full px-7 md:px-12">
         <motion.h2
           className="text-4xl font-bold uppercase inline-block text-right ml-auto"
@@ -40,7 +40,7 @@ const Skills = ({ skills }: SkillsProps) => {
         </motion.h2>
       </div>
 
-      <div className="relative w-full mt-20">
+      <div className="relative w-full mt-10">
         <div className="absolute left-1/2 -translate-x-1/2 w-screen">
           <div style={{ height: "100vh", width: "100vw" }}>
             <DomeGallery images={skillImages} />
