@@ -720,9 +720,7 @@ export default function DomeGallery({
       height: ${frameR.height}px;
       opacity: 0;
       z-index: 30;
-      will-change: transform,opacity;
-      transform-origin: top left;
-      transition: transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease;
+      transition: opacity ${enlargeTransitionMs}ms ease;
       border-radius: ${openedImageBorderRadius};
       overflow: hidden;
       background: rgba(255, 255, 255, 0.1);
@@ -743,7 +741,6 @@ export default function DomeGallery({
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
     `;
 
     // Create and style image
