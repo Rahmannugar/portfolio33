@@ -3,12 +3,22 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import DomeGallery from "../custom-ui/skills-dome";
+import type { Skill } from "@/lib/types/skill";
 
 const heading = "Skills & Technologies";
 
-const Skills = () => {
+interface SkillsProps {
+  skills: Skill[];
+}
+
+const Skills = ({ skills }: SkillsProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const skillImages = skills.map((skill) => ({
+    src: skill.imageUrl,
+    alt: skill.skill,
+  }));
 
   return (
     <section ref={sectionRef} className="relative mt-40 h-[4000px]" id="skills">
@@ -33,7 +43,7 @@ const Skills = () => {
       <div className="relative w-full mt-20">
         <div className="absolute left-1/2 -translate-x-1/2 w-screen">
           <div style={{ height: "100vh", width: "100vw" }}>
-            <DomeGallery />
+            <DomeGallery images={skillImages} />
           </div>
         </div>
       </div>

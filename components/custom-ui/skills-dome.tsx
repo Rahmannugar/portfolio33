@@ -3,12 +3,24 @@
 import { useEffect, useMemo, useRef, useCallback } from "react";
 import { useGesture } from "@use-gesture/react";
 
-type ImageItem = string | { src: string; alt?: string };
+export interface ImageItem {
+  src: string;
+  alt: string;
+}
 
-type DomeGalleryProps = {
-  images?: ImageItem[];
+export interface ItemDef {
+  x: number;
+  y: number;
+  sizeX: number;
+  sizeY: number;
+  src: string;
+  alt: string;
+}
+
+export interface DomeGalleryProps {
+  images: (ImageItem | string)[];
   fit?: number;
-  fitBasis?: "auto" | "min" | "max" | "width" | "height";
+  fitBasis?: "auto" | "width" | "height" | "diagonal";
   minRadius?: number;
   maxRadius?: number;
   padFactor?: number;
@@ -23,99 +35,7 @@ type DomeGalleryProps = {
   imageBorderRadius?: string;
   openedImageBorderRadius?: string;
   grayscale?: boolean;
-};
-
-type ItemDef = {
-  src: string;
-  alt: string;
-  x: number;
-  y: number;
-  sizeX: number;
-  sizeY: number;
-};
-
-const DEFAULT_IMAGES: ImageItem[] = [
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853741/html_w4mmpd.svg",
-    alt: "HTML",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853740/css_qbykvo.svg",
-    alt: "CSS",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853741/tailwindcss_oee9ga.svg",
-    alt: "Tailwind CSS",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853732/framermotion_buh7hm.svg",
-    alt: "Motion",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853743/javascript_bkfllp.svg",
-    alt: "Javascript",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853732/typescript_ttgxpn.svg",
-    alt: "TypeScript",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853738/react_sq0fwn.svg",
-    alt: "React",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853733/nextjs_tddxti.svg",
-    alt: "Next.js",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853735/sanity_qcpgx3.svg",
-    alt: "Sanity.io",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853736/electron_lkatwi.svg",
-    alt: "Electron",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853736/nodejs_lhww2n.svg",
-    alt: "Nodejs",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853735/express_gsizmq.svg",
-    alt: "Express",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853732/git_qwrkel.svg",
-    alt: "Git",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853733/firebase_j160hc.svg",
-    alt: "Firebase",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853734/mongodb_bbzoc4.svg",
-    alt: "MongoDB",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853731/sqlite_r8kanv.svg",
-    alt: "SQLite",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853732/postgresql_n0dcx9.svg",
-    alt: "PostgreSQL",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759855642/supabase_jihcnb.svg",
-    alt: "Supabase",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853731/vitest_ghzgkn.svg",
-    alt: "Vitest",
-  },
-  {
-    src: "https://res.cloudinary.com/thirtythree/image/upload/v1759853734/cypress_magwkw.svg",
-    alt: "Cypress",
-  },
-];
+}
 
 const DEFAULTS = {
   maxVerticalRotationDeg: 5,
@@ -137,7 +57,7 @@ const getDataNumber = (el: HTMLElement, name: string, fallback: number) => {
   return Number.isFinite(n) ? n : fallback;
 };
 
-function buildItems(pool: ImageItem[], seg: number): ItemDef[] {
+function buildItems(pool: (ImageItem | string)[], seg: number): ItemDef[] {
   const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2);
   const evenYs = [-4, -2, 0, 2, 4];
   const oddYs = [-3, -1, 1, 3, 5];
@@ -203,7 +123,7 @@ function computeItemBaseRotation(
 }
 
 export default function DomeGallery({
-  images = DEFAULT_IMAGES,
+  images = [], // Remove default value of DEFAULT_IMAGES
   fit = 0.5,
   fitBasis = "auto",
   minRadius = 600,
@@ -284,20 +204,19 @@ export default function DomeGallery({
         aspect = w / h;
       let basis: number;
       switch (fitBasis) {
-        case "min":
-          basis = minDim;
-          break;
-        case "max":
-          basis = maxDim;
-          break;
         case "width":
           basis = w;
           break;
         case "height":
           basis = h;
           break;
+        case "diagonal":
+          basis = Math.sqrt(w * w + h * h);
+          break;
+        case "auto":
         default:
-          basis = aspect >= 1.3 ? w : minDim;
+          basis = aspect > 1 ? h : w;
+          break;
       }
       let radius = basis * fit;
       const heightGuard = h * 1.35;
