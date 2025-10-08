@@ -734,51 +734,47 @@ export default function DomeGallery({
       padding: 20px;
     `;
 
-    const imgContainer = document.createElement("div");
-    imgContainer.style.cssText = `
-      flex: 1;
+    // Create container for both image and text
+    const contentContainer = document.createElement("div");
+    contentContainer.style.cssText = `
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
       gap: 20px;
     `;
 
+    // Create and style image
     const img = document.createElement("img");
-    const rawSrc =
-      parent.dataset.src ||
-      (el.querySelector("img") as HTMLImageElement)?.src ||
-      "";
-    const rawAlt = (el.querySelector("img") as HTMLImageElement)?.alt || "";
+    const imgElement = el.querySelector("img");
+    const rawSrc = parent.dataset.src || imgElement?.src || "";
+    const rawAlt = parent.dataset.alt || imgElement?.alt || "";
 
     img.src = rawSrc;
-    img.alt = rawAlt;
     img.style.cssText = `
       max-width: 100%;
-      max-height: 80%;
+      max-height: 70%;
       object-fit: contain;
       filter: ${grayscale ? "grayscale(1)" : "none"};
     `;
 
-    const altText = document.createElement("div");
-    altText.textContent = rawAlt;
+    // Create and style text
+    const altText = document.createElement("p");
+    altText.textContent = rawAlt!;
     altText.style.cssText = `
       color: white;
       font-size: 1.25rem;
-      font-weight: 500;
+      font-weight: 600;
       text-align: center;
-      margin-top: auto;
-      padding: 12px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-      border-radius: 8px;
+      margin-top: 20px;
     `;
 
-    imgContainer.appendChild(img);
-    imgContainer.appendChild(altText);
-    overlay.appendChild(imgContainer);
+    // Append elements in the correct order
+    contentContainer.appendChild(img);
+    contentContainer.appendChild(altText);
+    overlay.appendChild(contentContainer);
     viewerRef.current!.appendChild(overlay);
 
     const tx0 = tileR.left - frameR.left;
