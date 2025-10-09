@@ -8,39 +8,47 @@ import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-
-const menuItems = [
-  { label: "Experience", link: "/#experience" },
-  { label: "Projects", link: "/#projects" },
-  { label: "Blog", link: "/blog" },
-  { label: "Contact", link: "/#contact" },
-];
-
-const socialItems = [
-  {
-    label: "Email",
-    icon: <MdEmail size={30} />,
-    link: "mailto:cladeadenugar@gmail.com",
-  },
-  {
-    label: "GitHub",
-    icon: <FaGithub size={30} />,
-    link: "https://github.com/rahmannugar",
-  },
-  {
-    label: "LinkedIn",
-    icon: <FaLinkedin size={30} />,
-    link: "https://linkedin.com/in/rahmannugar",
-  },
-  {
-    label: "Twitter",
-    icon: <FaSquareXTwitter size={30} />,
-    link: "https://twitter.com/NugarRahman",
-  },
-];
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const menuItems = [
+    {
+      label: "Experience",
+      link: pathname === "/" ? "/#experience" : "/experience",
+    },
+    {
+      label: "Projects",
+      link: pathname === "/" ? "/#projects" : "/projects",
+    },
+    { label: "Blog", link: "/blog" },
+    { label: "Contact", link: "/#contact" },
+  ];
+
+  const socialItems = [
+    {
+      label: "Email",
+      icon: <MdEmail size={30} />,
+      link: "mailto:cladeadenugar@gmail.com",
+    },
+    {
+      label: "GitHub",
+      icon: <FaGithub size={30} />,
+      link: "https://github.com/rahmannugar",
+    },
+    {
+      label: "LinkedIn",
+      icon: <FaLinkedin size={30} />,
+      link: "https://linkedin.com/in/rahmannugar",
+    },
+    {
+      label: "Twitter",
+      icon: <FaSquareXTwitter size={30} />,
+      link: "https://twitter.com/NugarRahman",
+    },
+  ];
 
   const closeMenu = () => setIsOpen(false);
 
