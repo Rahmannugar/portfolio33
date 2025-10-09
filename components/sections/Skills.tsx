@@ -21,10 +21,10 @@ const Skills = ({ skills }: SkillsProps) => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative mt-40" id="skills">
-      <div className="flex justify-end w-full px-7 md:px-12">
+    <section ref={sectionRef} className="relative mt-40 min-h-screen" id="skills">
+      <div className="flex justify-end w-full">
         <motion.h2
-          className="text-4xl font-bold uppercase inline-block text-right ml-auto"
+          className="text-4xl font-bold uppercase text-right"
           initial={{ x: "100vw", opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -40,7 +40,7 @@ const Skills = ({ skills }: SkillsProps) => {
         </motion.h2>
       </div>
 
-      <div className="relative w-full mt-10">
+      <div className="relative w-full">
         <div className="absolute left-1/2 -translate-x-1/2 w-screen">
           <div style={{ height: "100vh", width: "100vw" }}>
             <DomeGallery images={skillImages} />

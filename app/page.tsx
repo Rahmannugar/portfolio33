@@ -1,3 +1,4 @@
+import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
 import Profile from "@/components/sections/Profile";
 import Skills from "@/components/sections/Skills";
@@ -13,6 +14,7 @@ async function Home() {
       <Hero />
       <Profile />
       <Skills skills={skills} />
+      <Contact />
     </main>
   );
 }
