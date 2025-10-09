@@ -62,9 +62,9 @@ const useDarkMode = () => {
 
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
-  width = 200,
+  width = 300,
   height = 80,
-  borderRadius = 20,
+  borderRadius = 50,
   borderWidth = 0.07,
   brightness = 50,
   opacity = 0.93,
@@ -78,7 +78,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   blueOffset = 20,
   xChannel = "R",
   yChannel = "G",
-  mixBlendMode = "difference",
+  mixBlendMode = "screen",
   className = "",
   style = {},
 }) => {
@@ -197,6 +197,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   }, [width, height]);
 
   const supportsSVGFilters = () => {
+    if (typeof navigator === "undefined") return false;
+
     const isWebkit =
       /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
     const isFirefox = /Firefox/.test(navigator.userAgent);

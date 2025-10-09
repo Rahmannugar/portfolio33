@@ -29,7 +29,7 @@ const Profile = () => {
         />
       </motion.h2>
 
-      <div className="flex flex-col items-start justify-between lg:justify-center gap-8 md:flex-row mt-10">
+      <div className="flex flex-col items-start justify-between lg:justify-center gap-10 md:flex-row mt-10">
         <div className="lg:hidden flex justify-center w-full">
           <ProfileCard
             name="Adenuga Abdulrahmon"
