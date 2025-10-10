@@ -15,8 +15,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Nugar.dev",
-    template: "%s - Nugar.dev",
+    default: "33",
+    template: "%s - 33",
   },
   description:
     "Rahmannugar Portfolio website showcasing projects and skills in web development and design.",

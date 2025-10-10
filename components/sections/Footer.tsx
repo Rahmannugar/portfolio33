@@ -39,7 +39,9 @@ const Footer = () => {
         {/* Top Section */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-8">
           <div>
-            <Image src="/33.png" alt="Nugar.dev" width={100} height={100} />
+            <Link href="/">
+              <Image src="/33.png" alt="Nugar.dev" width={100} height={100} />
+            </Link>
           </div>
 
           {/* Links Grid */}

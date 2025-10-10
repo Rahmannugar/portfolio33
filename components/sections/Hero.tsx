@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative z-10 flex justify-between gap-10 items-start pt-40 lg:pt-48"
+      className="relative z-10 flex justify-between gap-10 items-start"
     >
       <div className="space-y-6">
         <motion.h1
