@@ -28,7 +28,7 @@ const getBrowser = () => {
 const Experience = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const demoExperiences = experiences.slice(0, 3);
+  const demoExperiences = experiences.slice(0, 4);
 
   // State for glass pill visibility and overlay
   const [showOverlay, setShowOverlay] = useState(false);
@@ -87,17 +87,22 @@ const Experience = ({ experiences }: ExperienceProps) => {
       {/* GlassSurface overlay */}
       <GlassPill show={showOverlay} fadeOut={fadeOut} browser={browser} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3 items-stretch mt-10 font-semibold relative z-20">
-        {demoExperiences.map((exp) => (
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 font-semibold relative z-20">
+        {demoExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
-            className="cursor-pointer
-              flex flex-col gap-5 h-full
+            className={`
+              cursor-pointer
+              flex flex-col gap-5 h-full w-full
+  
               bg-[#1e1d1d]
               rounded-lg
-              px-8 py-8
-              w-full
-            "
+              px-6 py-8
+              transition-all duration-300
+              hover:bg-[#232222]
+              active:bg-[#232222]
+             
+            `}
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{ duration: 1.2, ease: "easeOut" }}
@@ -141,9 +146,11 @@ const Experience = ({ experiences }: ExperienceProps) => {
         ))}
       </div>
 
-      <div>
+      <div className="flex justify-center mt-16 relative z-20">
         <Link href="/experience">
-          <button>View Entire Work History</button>
+          <button className="bg-purple-400 hover:bg-purple-300 active:bg-purple-300 duration-300 ease-in-out text-black py-3 font-semibold px-6 cursor-pointer rounded-full">
+            View Entire Work History
+          </button>
         </Link>
       </div>
     </section>

@@ -64,7 +64,7 @@ const Hero = () => {
           ))}
         </motion.h1>
 
-        <div className="max-w-3xl h-[150px] md:h-[70px] w-[300px] md:w-[600px] lg:w-3xl text-lg lg:text-xl">
+        <div className="max-w-2xl h-[150px] md:h-[80px] text-lg lg:text-xl">
           <Typewriter
             options={{
               strings: [
@@ -108,7 +108,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="hidden lg:block lg:mt-[-40px] lg:pr-12 2xl:pr-0">
+      <div className="hidden lg:block lg:mt-[-40px]">
         <ProfileCard
           name="Adenuga Abdulrahmon"
           title="Frontend Engineer"

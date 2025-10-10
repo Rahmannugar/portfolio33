@@ -8,7 +8,7 @@ import { getExperience } from "@/lib/services/experience";
 
 export const revalidate = 86400; // Revalidate every 24 hours
 
-async function Home() {
+async function HomePage() {
   const skills = await getSkills();
   const experiences = await getExperience();
 
@@ -23,4 +23,4 @@ async function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
