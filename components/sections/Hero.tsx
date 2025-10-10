@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import ProfileCard from "../custom-ui/profile-card/profile-card";
+import { useRef } from "react";
 
 const heroText = "Hi, I am Adenuga";
 
@@ -12,7 +13,6 @@ const containerVariants = {
   visible: {
     transition: {
       staggerChildren: 0.06,
-      delayChildren: 1.8,
     },
   },
 };
@@ -37,6 +37,9 @@ export const handleContactClick = () => {
 };
 
 const Hero = () => {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const inView = useInView(h1Ref, { once: true, margin: "-100px" });
+
   return (
     <section
       id="hero"
@@ -44,10 +47,11 @@ const Hero = () => {
     >
       <div className="space-y-6">
         <motion.h1
+          ref={h1Ref}
           className="text-5xl font-bold text-purple-300 uppercase max-w-[220px] sm:max-w-full"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={inView ? "visible" : "hidden"}
         >
           {heroText.split("").map((char, i) => (
             <motion.span

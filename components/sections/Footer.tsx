@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-8">
           <div>
             <Link href="/">
-              <Image src="/33.png" alt="Nugar.dev" width={100} height={100} />
+              <Image src="/33.png" alt="Nugar.dev" width={80} height={80} />
             </Link>
           </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
             {/*App Section */}
             <div>
               <h2 className="mb-6 font-semibold uppercase">Sections</h2>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 {menuItems.map((item) => (
                   <li key={item.label}>
                     <Link href={item.link} className="hover:underline">
@@ -63,7 +63,7 @@ const Footer = () => {
             {/* Socials Section */}
             <div>
               <h2 className="mb-6 font-semibold uppercase">Socials</h2>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 <li>
                   <Link
                     href="mailto:cladeadenugar@gmail.com"

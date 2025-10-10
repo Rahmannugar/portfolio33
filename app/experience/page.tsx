@@ -7,7 +7,6 @@ const experiences = await getExperience();
 const ExperiencePage = () => {
   return (
     <main>
-      <h1 className="text-5xl uppercase font-semibold">Experience</h1>
       <Experiences experiences={experiences} />
     </main>
   );

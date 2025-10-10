@@ -11,11 +11,61 @@ interface ExperienceProps {
   experiences: Experience[];
 }
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+};
+
+const letterVariants = {
+  hidden: { y: 0, scale: 1, opacity: 0 },
+  visible: {
+    y: [-10, 0],
+    scale: [1.2, 1],
+    opacity: 1,
+    transition: {
+      y: { type: "spring", stiffness: 500, damping: 20 },
+      scale: { type: "spring", stiffness: 500, damping: 20 },
+      opacity: { duration: 0.15 },
+      duration: 0.4,
+    },
+  },
+};
+
+const headingText = "Experience";
+
 const Experiences = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const h1InView = useInView(h1Ref, { once: true, margin: "-100px" });
+
   return (
     <section ref={sectionRef}>
+      <motion.h1
+        ref={h1Ref}
+        className="text-5xl uppercase font-semibold"
+        variants={containerVariants}
+        initial="hidden"
+        animate={h1InView ? "visible" : "hidden"}
+      >
+        {headingText.split("").map((char, i) => (
+          <motion.span
+            key={i}
+            variants={letterVariants}
+            className="inline-block"
+            style={{
+              display: char === " " ? "inline-block" : undefined,
+              minWidth: char === " " ? "0.5em" : undefined,
+            }}
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
+      </motion.h1>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 font-semibold relative z-20">
         {experiences.map((exp, idx) => (
           <motion.article
