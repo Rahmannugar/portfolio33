@@ -123,7 +123,7 @@ function computeItemBaseRotation(
 }
 
 export default function DomeGallery({
-  images = [], // Remove default value of DEFAULT_IMAGES
+  images = [],
   fit = 0.5,
   fitBasis = "auto",
   minRadius = 600,

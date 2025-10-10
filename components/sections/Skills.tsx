@@ -21,7 +21,11 @@ const Skills = ({ skills }: SkillsProps) => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative mt-40 min-h-screen" id="skills">
+    <section
+      ref={sectionRef}
+      className="relative mt-40 min-h-screen"
+      id="skills"
+    >
       <div className="flex justify-end w-full">
         <motion.h2
           className="text-4xl font-bold uppercase text-right"

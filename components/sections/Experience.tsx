@@ -15,7 +15,7 @@ interface ExperienceProps {
 
 const heading = "Experience";
 
-// Browser detection functions
+// Browser detection function
 const getBrowser = () => {
   if (typeof window === "undefined") return "unknown";
 
@@ -30,7 +30,6 @@ const Experience = ({ experiences }: ExperienceProps) => {
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
   const demoExperiences = experiences.slice(0, 3);
 
-  // State for glass pill visibility and overlay
   const [showOverlay, setShowOverlay] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [browser, setBrowser] = useState("unknown");
@@ -57,14 +56,14 @@ const Experience = ({ experiences }: ExperienceProps) => {
         // Remove overlay completely after fade animation
         setTimeout(() => {
           setShowOverlay(false);
-        }, 350); // Match this with your animation duration
+        }, 350);
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showOverlay]); // Add showOverlay to dependencies
+  }, [showOverlay]);
 
   return (
     <section className="relative mt-28" ref={sectionRef} id="experience">
@@ -94,7 +93,6 @@ const Experience = ({ experiences }: ExperienceProps) => {
             className={`
               cursor-pointer
               flex flex-col gap-5 h-full w-full
-  
               bg-[#1e1d1d]
               rounded-lg
               px-6 py-8
@@ -103,9 +101,9 @@ const Experience = ({ experiences }: ExperienceProps) => {
               active:bg-[#232222]
               ${idx === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-[50%] lg:col-span-1 lg:max-w-full" : ""}
             `}
-            initial={{ opacity: 0, y: 40, scale: 0.98 }}
-            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: idx * 0.3, ease: "easeOut" }}
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>
