@@ -12,7 +12,7 @@ const containerVariants = {
   visible: {
     transition: {
       staggerChildren: 0.06,
-      delayChildren: 1.8, 
+      delayChildren: 1.8,
     },
   },
 };
@@ -96,8 +96,8 @@ const Hero = () => {
             <FaLinkedin size={30} />
           </motion.a>
           <motion.a
-            whileHover={{ scale: 0.8 }}
-            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.1 }}
             href="https://docs.google.com/document/d/1ibsZ8pXdPh5WeA22O7mXJTckm9-3OWxYASYGmaO8f68"
             target="_blank"
           >

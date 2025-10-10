@@ -2,11 +2,11 @@
 
 import CalForm from "../custom-ui/cal-embed";
 
-const Contact = () => {
+const Services = () => {
   return (
-    <section className="relative mt-40" id="contact">
+    <section className="relative mt-40" id="services">
       <CalForm />
     </section>
   );
 };
-export default Contact;
+export default Services;
