@@ -1,4 +1,4 @@
 const ExperiencePage = () => {
-  return <div>ExperiencePage</div>;
+  return <main>ExperiencePage</main>;
 };
 export default ExperiencePage;

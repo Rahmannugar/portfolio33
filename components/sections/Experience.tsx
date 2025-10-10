@@ -28,7 +28,7 @@ const getBrowser = () => {
 const Experience = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const demoExperiences = experiences.slice(0, 4);
+  const demoExperiences = experiences.slice(0, 3);
 
   // State for glass pill visibility and overlay
   const [showOverlay, setShowOverlay] = useState(false);
@@ -87,7 +87,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
       {/* GlassSurface overlay */}
       <GlassPill show={showOverlay} fadeOut={fadeOut} browser={browser} />
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 font-semibold relative z-20">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 font-semibold relative z-20">
         {demoExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
@@ -101,7 +101,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
               transition-all duration-300
               hover:bg-[#232222]
               active:bg-[#232222]
-             
+              ${idx === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-[50%] lg:col-span-1 lg:max-w-full" : ""}
             `}
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}

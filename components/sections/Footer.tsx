@@ -1,15 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MdArrowDropUp } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
+  const menuItems = [
+    {
+      label: "Experience",
+      link: pathname === "/" ? "/#experience" : "/experience",
+    },
+    {
+      label: "Projects",
+      link: pathname === "/" ? "/#projects" : "/projects",
+    },
+    {
+      label: "Services",
+      link: "/#services",
+    },
+    {
+      label: "Blog",
+      link: "/blog",
+    },
+  ];
 
   return (
     <footer className="w-screen bg-[#1e1d1d] py-10 mt-20">
@@ -26,26 +48,13 @@ const Footer = () => {
             <div>
               <h2 className="mb-6 font-semibold uppercase">Sections</h2>
               <ul className="space-y-4">
-                <li>
-                  <Link href="#Experience" className="hover:underline">
-                    Experience
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#Projects" className="hover:underline">
-                    Projects
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#Services" className="hover:underline">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#Blog" className="hover:underline">
-                    Blog
-                  </Link>
-                </li>
+                {menuItems.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.link} className="hover:underline">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -117,11 +126,9 @@ const Footer = () => {
           <span className="sm:text-center">
             ©{currentYear} 33™. All Rights Reserved.
           </span>
-
-          {/* Scroll to top button */}
         </div>
       </div>
-
+      {/* Scroll to top button */}
       <div className="flex items-center justify-center mt-4 sm:mt-0">
         <button
           onClick={scrollToTop}
