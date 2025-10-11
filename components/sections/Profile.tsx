@@ -9,7 +9,7 @@ const heading = "About Me";
 
 const Profile = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const inView = useInView(sectionRef, { margin: "-100px" });
 
   return (
     <section className="relative mt-40" ref={sectionRef} id="profile">

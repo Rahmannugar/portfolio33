@@ -13,7 +13,7 @@ interface SkillsProps {
 
 const Skills = ({ skills }: SkillsProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const inView = useInView(sectionRef, { margin: "-100px" });
 
   const skillImages = skills.map((skill) => ({
     src: skill.imageUrl,

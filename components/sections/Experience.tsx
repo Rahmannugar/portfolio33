@@ -18,7 +18,6 @@ const heading = "Experience";
 // Browser detection function
 const getBrowser = () => {
   if (typeof window === "undefined") return "unknown";
-
   if (/Firefox/.test(navigator.userAgent)) return "firefox";
   if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent))
     return "safari";
@@ -27,8 +26,17 @@ const getBrowser = () => {
 
 const Experience = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
   const demoExperiences = experiences.slice(0, 3);
+
+  const inView = useInView(sectionRef, { margin: "-100px" });
+
+  const articleRefs = useRef(
+    Array.from({ length: demoExperiences.length }, () =>
+      useRef<HTMLDivElement>(null)
+    )
+  );
+
+  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
 
   const [showOverlay, setShowOverlay] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
@@ -45,15 +53,11 @@ const Experience = ({ experiences }: ExperienceProps) => {
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
 
-      // Show and fade in when entering viewport from top
       if (sectionTop < 120 && sectionBottom > 220) {
         setShowOverlay(true);
         setFadeOut(false);
-      }
-      // Fade out when scrolling up past the section or down to the bottom
-      else if ((sectionTop >= 120 || sectionBottom <= 220) && showOverlay) {
+      } else if ((sectionTop >= 120 || sectionBottom <= 220) && showOverlay) {
         setFadeOut(true);
-        // Remove overlay completely after fade animation
         setTimeout(() => {
           setShowOverlay(false);
         }, 350);
@@ -71,6 +75,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
         className="text-4xl font-bold uppercase inline-block"
         initial={{ x: -60, opacity: 0 }}
         animate={inView ? { x: 0, opacity: 1 } : {}}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         {heading}
@@ -90,6 +95,11 @@ const Experience = ({ experiences }: ExperienceProps) => {
         {demoExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
+            ref={articleRefs.current[idx]}
+            initial={{ y: 40, opacity: 0 }}
+            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ willChange: "opacity, transform" }}
             className={`
               cursor-pointer
               flex flex-col gap-5 h-full w-full
@@ -101,9 +111,6 @@ const Experience = ({ experiences }: ExperienceProps) => {
               active:bg-[#232222]
               ${idx === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-[50%] lg:col-span-1 lg:max-w-full" : ""}
             `}
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: idx * 0.3, ease: "easeInOut" }}
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>

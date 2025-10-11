@@ -48,9 +48,15 @@ const PER_PAGE = 6;
 
 const Experiences = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const h1Ref = useRef<HTMLHeadingElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const h1InView = useInView(h1Ref, { once: true, margin: "-100px" });
+  const inView = useInView(sectionRef);
+
+  const articleRefs = useRef(
+    Array.from({ length: experiences.length }, () =>
+      useRef<HTMLDivElement>(null)
+    )
+  );
+
+  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
 
   // Pagination state
   const [page, setPage] = useState(1);
@@ -68,11 +74,10 @@ const Experiences = ({ experiences }: ExperienceProps) => {
   return (
     <section ref={sectionRef}>
       <motion.h1
-        ref={h1Ref}
         className="text-5xl uppercase font-semibold"
         variants={containerVariants}
         initial="hidden"
-        animate={h1InView ? "visible" : "hidden"}
+        animate={inView ? "visible" : "hidden"}
       >
         {headingText.split("").map((char, i) => (
           <motion.span
@@ -92,6 +97,11 @@ const Experiences = ({ experiences }: ExperienceProps) => {
         {paginatedExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
+            ref={articleRefs.current[idx]}
+            initial={{ y: 40, opacity: 0 }}
+            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ willChange: "opacity, transform" }}
             className={`
                       cursor-pointer
                       flex flex-col gap-5 h-full w-full
@@ -102,9 +112,6 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                       hover:bg-[#232222]
                       active:bg-[#232222]
                     `}
-            initial={{ opacity: 0, y: 40, scale: 0.98 }}
-            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>

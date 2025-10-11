@@ -39,7 +39,7 @@ export interface DomeGalleryProps {
 
 const DEFAULTS = {
   maxVerticalRotationDeg: 5,
-  dragSensitivity: 20,
+  dragSensitivity: 10,
   enlargeTransitionMs: 300,
   segments: 35,
 };

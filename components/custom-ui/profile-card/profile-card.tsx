@@ -244,8 +244,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       if (!enableMobileTilt) return;
 
       if (
-        typeof (window.DeviceMotionEvent as any).requestPermission ===
-        "function"
+        typeof window.DeviceMotionEvent !== "undefined" &&
+        typeof (window.DeviceMotionEvent as any).requestPermission === "function"
       ) {
         (window.DeviceMotionEvent as any)
           .requestPermission()
