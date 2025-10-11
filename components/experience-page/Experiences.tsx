@@ -146,7 +146,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
       </div>
       {/* Pagination Controls */}
 
-      <Pagination className="mt-12">
+      <Pagination className="mt-12 bg-[#181818]/80 border border-[#232222] rounded-xl shadow-lg px-4 py-2 w-fit mx-auto">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
@@ -157,6 +157,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 pointerEvents: page === 1 ? "none" : undefined,
                 opacity: page === 1 ? 0.5 : 1,
               }}
+              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
           {Array.from({ length: totalPages }).map((_, i) => (
@@ -165,6 +166,11 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 isActive={page === i + 1}
                 onClick={() => handlePageChange(i + 1)}
                 href="#"
+                className={`!bg-transparent !text-white hover:!bg-[#232222] transition ${
+                  page === i + 1
+                    ? "!border-white !text-white !bg-[#232222]"
+                    : ""
+                }`}
               >
                 {i + 1}
               </PaginationLink>
@@ -179,6 +185,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 pointerEvents: page === totalPages ? "none" : undefined,
                 opacity: page === totalPages ? 0.5 : 1,
               }}
+              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
         </PaginationContent>
