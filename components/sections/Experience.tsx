@@ -8,6 +8,7 @@ import Link from "next/link";
 import type { Experience } from "@/lib/types/experience";
 import { urlFor } from "@/lib/services/sanity";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
+import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 
 interface ExperienceProps {
   experiences: Experience[];
@@ -104,6 +105,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
               cursor-pointer
               flex flex-col gap-5 h-full w-full
               bg-[#1e1d1d]
+              text-[#cccbcb]
               rounded-lg
               px-6 py-8
               transition-all duration-300
@@ -114,7 +116,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>
-              <h2 className="">{exp.company}</h2>
+              <h2 className="text-lg">{exp.company}</h2>
             </div>
             <motion.div
               className="flex justify-center w-full items-center"
@@ -129,12 +131,18 @@ const Experience = ({ experiences }: ExperienceProps) => {
               />
             </motion.div>
             <div className="flex flex-col gap-2">
-              <h2>{exp.location}</h2>
-              <h2>
-                {formatMonthYear(exp.startDate)} –{" "}
-                {exp.currentlyWorking
-                  ? "Present"
-                  : formatMonthYear(exp.endDate)}
+              <h2 className="flex items-center gap-1">
+                <FaLocationDot />
+                <span>{exp.location}</span>
+              </h2>
+              <h2 className="flex items-center gap-1">
+                <FaCalendarDays />
+                <span>
+                  {formatMonthYear(exp.startDate)} –{" "}
+                  {exp.currentlyWorking
+                    ? "Present"
+                    : formatMonthYear(exp.endDate)}
+                </span>
               </h2>
             </div>
             <Link

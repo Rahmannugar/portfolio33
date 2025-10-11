@@ -14,6 +14,7 @@ import {
   PaginationPrevious,
   PaginationNext,
 } from "@/components/ui/pagination";
+import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 
 interface ExperienceProps {
   experiences: Experience[];
@@ -103,19 +104,20 @@ const Experiences = ({ experiences }: ExperienceProps) => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             style={{ willChange: "opacity, transform" }}
             className={`
-                      cursor-pointer
-                      flex flex-col gap-5 h-full w-full
-                      bg-[#1e1d1d]
-                      rounded-lg
-                      px-6 py-8
-                      transition-all duration-300
-                      hover:bg-[#232222]
-                      active:bg-[#232222]
-                    `}
+                  cursor-pointer
+                  flex flex-col gap-5 h-full w-full
+                  bg-[#1e1d1d]
+                  text-[#cccbcb]
+                  rounded-lg
+                  px-6 py-8
+                  transition-all duration-300
+                  hover:bg-[#232222]
+                  active:bg-[#232222]  
+                `}
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>
-              <h2 className="">{exp.company}</h2>
+              <h2 className="text-lg">{exp.company}</h2>
             </div>
             <motion.div
               className="flex justify-center w-full items-center"
@@ -130,12 +132,18 @@ const Experiences = ({ experiences }: ExperienceProps) => {
               />
             </motion.div>
             <div className="flex flex-col gap-2">
-              <h2>{exp.location}</h2>
-              <h2>
-                {formatMonthYear(exp.startDate)} –{" "}
-                {exp.currentlyWorking
-                  ? "Present"
-                  : formatMonthYear(exp.endDate)}
+              <h2 className="flex items-center gap-1">
+                <FaLocationDot />
+                <span>{exp.location}</span>
+              </h2>
+              <h2 className="flex items-center gap-1">
+                <FaCalendarDays />
+                <span>
+                  {formatMonthYear(exp.startDate)} –{" "}
+                  {exp.currentlyWorking
+                    ? "Present"
+                    : formatMonthYear(exp.endDate)}
+                </span>
               </h2>
             </div>
             <Link
