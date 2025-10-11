@@ -878,7 +878,7 @@ export default function DomeGallery({
           ref={mainRef}
           className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
           style={{
-            touchAction: "none",
+            touchAction: "pan-y",
             WebkitUserSelect: "none",
           }}
         >

@@ -240,8 +240,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const pointerLeaveHandler = handlePointerLeave as EventListener;
     const deviceOrientationHandler = handleDeviceOrientation as EventListener;
 
-    const handleClick = () => {
-      if (!enableMobileTilt || location.protocol !== "https:") return;
+    const initializeMobileTilt = () => {
+      if (!enableMobileTilt) return;
+
       if (
         typeof (window.DeviceMotionEvent as any).requestPermission ===
         "function"
@@ -256,7 +257,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               );
             }
           })
-          .catch((err: any) => console.error(err));
+          .catch(console.error);
       } else {
         window.addEventListener("deviceorientation", deviceOrientationHandler);
       }
@@ -265,7 +266,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     card.addEventListener("pointerenter", pointerEnterHandler);
     card.addEventListener("pointermove", pointerMoveHandler);
     card.addEventListener("pointerleave", pointerLeaveHandler);
-    card.addEventListener("click", handleClick);
 
     const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
     const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
@@ -279,11 +279,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       wrap
     );
 
+    if (window.innerWidth <= 768) {
+      initializeMobileTilt();
+    }
+
     return () => {
       card.removeEventListener("pointerenter", pointerEnterHandler);
       card.removeEventListener("pointermove", pointerMoveHandler);
       card.removeEventListener("pointerleave", pointerLeaveHandler);
-      card.removeEventListener("click", handleClick);
       window.removeEventListener("deviceorientation", deviceOrientationHandler);
       animationHandlers.cancelAnimation();
     };
@@ -329,7 +332,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               className="avatar"
               src={avatarUrl}
               alt={`${name || "User"} avatar`}
-              loading="lazy"
+              loading="eager"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = "none";

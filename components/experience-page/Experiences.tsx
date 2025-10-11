@@ -1,11 +1,19 @@
 "use client";
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Experience } from "@/lib/types/experience";
-import { useRef } from "react";
 import Image from "next/image";
 import { urlFor } from "@/lib/services/sanity";
 import Link from "next/link";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+} from "@/components/ui/pagination";
 
 interface ExperienceProps {
   experiences: Experience[];
@@ -36,12 +44,26 @@ const letterVariants = {
 };
 
 const headingText = "Experience";
+const PER_PAGE = 6;
 
 const Experiences = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const h1Ref = useRef<HTMLHeadingElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
   const h1InView = useInView(h1Ref, { once: true, margin: "-100px" });
+
+  // Pagination state
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(experiences.length / PER_PAGE);
+
+  const paginatedExperiences = experiences.slice(
+    (page - 1) * PER_PAGE,
+    page * PER_PAGE
+  );
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) setPage(newPage);
+  };
 
   return (
     <section ref={sectionRef}>
@@ -67,13 +89,12 @@ const Experiences = ({ experiences }: ExperienceProps) => {
         ))}
       </motion.h1>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 font-semibold relative z-20">
-        {experiences.map((exp, idx) => (
+        {paginatedExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
             className={`
                       cursor-pointer
                       flex flex-col gap-5 h-full w-full
-          
                       bg-[#1e1d1d]
                       rounded-lg
                       px-6 py-8
@@ -123,6 +144,45 @@ const Experiences = ({ experiences }: ExperienceProps) => {
           </motion.article>
         ))}
       </div>
+      {/* Pagination Controls */}
+
+      <Pagination className="mt-12">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => handlePageChange(page - 1)}
+              aria-disabled={page === 1}
+              tabIndex={page === 1 ? -1 : 0}
+              style={{
+                pointerEvents: page === 1 ? "none" : undefined,
+                opacity: page === 1 ? 0.5 : 1,
+              }}
+            />
+          </PaginationItem>
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <PaginationItem key={i}>
+              <PaginationLink
+                isActive={page === i + 1}
+                onClick={() => handlePageChange(i + 1)}
+                href="#"
+              >
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => handlePageChange(page + 1)}
+              aria-disabled={page === totalPages}
+              tabIndex={page === totalPages ? -1 : 0}
+              style={{
+                pointerEvents: page === totalPages ? "none" : undefined,
+                opacity: page === totalPages ? 0.5 : 1,
+              }}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </section>
   );
 };

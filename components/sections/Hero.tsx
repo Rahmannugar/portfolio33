@@ -119,7 +119,7 @@ const Hero = () => {
           handle="rahmannugar"
           status="Online"
           contactText="Contact Me"
-          avatarUrl="/profile.JPG"
+          avatarUrl="/profile.jpg"
           showUserInfo={true}
           enableTilt={true}
           onContactClick={handleContactClick}

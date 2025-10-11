@@ -38,7 +38,7 @@ const Profile = () => {
             status="Online"
             showBehindGradient={false}
             contactText="Contact Me"
-            avatarUrl="/profile.JPG"
+            avatarUrl="/profile.jpg"
             showUserInfo={true}
             enableTilt={true}
             onContactClick={handleContactClick}
