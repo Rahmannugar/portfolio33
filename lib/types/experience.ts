@@ -5,6 +5,7 @@ export interface Experience {
   image: string;
   location: string;
   startDate: string;
+  currentlyWorking: boolean;
   endDate: string;
   summary: string;
   highlights: string[];

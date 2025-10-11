@@ -132,8 +132,10 @@ const Experiences = ({ experiences }: ExperienceProps) => {
             <div className="flex flex-col gap-2">
               <h2>{exp.location}</h2>
               <h2>
-                {formatMonthYear(exp.startDate)} -{" "}
-                {formatMonthYear(exp.endDate)}
+                {formatMonthYear(exp.startDate)} –{" "}
+                {exp.currentlyWorking
+                  ? "Present"
+                  : formatMonthYear(exp.endDate)}
               </h2>
             </div>
             <Link

@@ -8,5 +8,6 @@ export interface Project {
   images: string[];
   languages: string[];
   startDate: string;
+  currentlyWorking: boolean;
   endDate: string;
 }

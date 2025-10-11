@@ -59,10 +59,27 @@ export const projectType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "currentlyWorking",
+      title: "Currently Working On This Project?",
+      type: "boolean",
+      validation: (Rule) => Rule.required(),
+      initialValue: false,
+    }),
+    defineField({
       name: "endDate",
       title: "End Date",
       type: "date",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((endDate, context) => {
+          const currentlyWorking = (context.parent as any)?.currentlyWorking;
+          if (!currentlyWorking && !endDate) {
+            return "End Date is required if not currently working on this project";
+          }
+          if (currentlyWorking && endDate) {
+            return "End Date should be empty if currently working on this project";
+          }
+          return true;
+        }),
     }),
   ],
 });

@@ -39,10 +39,27 @@ export const experienceType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "currentlyWorking",
+      title: "Currently Working Here?",
+      type: "boolean",
+      validation: (Rule) => Rule.required(),
+      initialValue: false,
+    }),
+    defineField({
       name: "endDate",
       title: "End Date",
       type: "date",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((endDate, context) => {
+          const currentlyWorking = (context.parent as any)?.currentlyWorking;
+          if (!currentlyWorking && !endDate) {
+            return "End Date is required if not currently working here";
+          }
+          if (currentlyWorking && endDate) {
+            return "End Date should be empty if currently working here";
+          }
+          return true;
+        }),
     }),
     defineField({
       name: "summary",
