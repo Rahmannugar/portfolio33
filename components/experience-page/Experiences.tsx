@@ -15,6 +15,7 @@ import {
   PaginationNext,
 } from "@/components/ui/pagination";
 import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
+import { FaBriefcase } from "react-icons/fa";
 
 interface ExperienceProps {
   experiences: Experience[];
@@ -148,10 +149,11 @@ const Experiences = ({ experiences }: ExperienceProps) => {
               className="flex justify-center"
             >
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 1.1 }}
-                className="cursor-pointer bg-white py-2 px-5 rounded-full font-semibold text-black"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full cursor-pointer bg-white/10 border border-white/20 py-2.5 px-5 rounded-lg font-semibold text-white flex items-center justify-center gap-2 hover:bg-white/20 transition-colors"
               >
+                <FaBriefcase className="text-xs" />
                 View Work Details
               </motion.button>
             </Link>

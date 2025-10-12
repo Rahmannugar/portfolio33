@@ -5,9 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/lib/services/sanity";
 import Image from "next/image";
 import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
+import { FaBriefcase } from "react-icons/fa";
 
 interface SingleExperienceProps {
   experience: Experience;
@@ -15,20 +16,9 @@ interface SingleExperienceProps {
 
 const SingleExperience = ({ experience }: SingleExperienceProps) => {
   return (
-    <section className="mt-10">
-      {/* Back Button */}
-      <motion.div
-        whileHover={{ scale: 0.9 }}
-        whileTap={{ scale: 0.9 }}
-        className="absolute top-32 left-8 md:left-12 bg-[#1e1d1d] w-fit p-2 rounded-full shadow-lg"
-      >
-        <Link href="/experience" aria-label="Back to Experience List">
-          <IoIosArrowRoundBack size={30} />
-        </Link>
-      </motion.div>
-
+    <section>
       {/* Card */}
-      <div className="bg-[#1e1d1d] rounded-2xl shadow-xl px-8 py-10 flex flex-col gap-8 border border-[#232222]/60">
+      <div className="bg-[#1e1d1d] max-w-3xl rounded-2xl shadow-xl p-8 flex flex-col gap-8 border border-[#232222]/60">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
           <motion.div
@@ -77,12 +67,23 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
           <div>
             <h4 className="font-bold text-xl mb-2">Highlights</h4>
             <ul className="list-disc list-inside space-y-2">
-              {experience.highlights.map((highlight, index) => (
-                <li key={index}>{highlight}</li>
+              {experience.highlights.map((highlight, idx) => (
+                <li key={idx}>{highlight}</li>
               ))}
             </ul>
           </div>
         )}
+
+        <Link href="/experience" className="w-full md:w-auto">
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full cursor-pointer bg-white/10 border border-white/20 py-2.5 px-5 rounded-lg font-semibold text-white flex items-center justify-center gap-2 hover:bg-white/20 transition-colors"
+          >
+            <FaBriefcase className="text-xs" />
+            Back to all experiences
+          </motion.button>
+        </Link>
       </div>
     </section>
   );

@@ -158,7 +158,7 @@ const Projects = ({ projects }: ProjectsProps) => {
             )}
 
             <div className="mt-auto flex flex-col gap-3">
-              <Link href={`/project/${project._id}`} className="w-full">
+              <Link href={`/projects/${project._id}`} className="w-full">
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
