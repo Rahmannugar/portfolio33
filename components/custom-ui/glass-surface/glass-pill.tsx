@@ -162,7 +162,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     xChannel,
     yChannel,
     mixBlendMode,
-    updateDisplacementMap,
   ]);
 
   useEffect(() => {
