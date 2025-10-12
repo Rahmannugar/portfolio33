@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s - 33",
   },
   description:
-    "Rahmannugar Portfolio website showcasing projects and skills in web development and design.",
+    "Rahmannugar's portfolio website showcasing projects and skills in web development and design.",
 
   twitter: {
     card: "summary_large_image",
