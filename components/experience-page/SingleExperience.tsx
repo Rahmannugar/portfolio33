@@ -3,7 +3,6 @@
 import { Experience } from "@/lib/types/experience";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
 import { urlFor } from "@/lib/services/sanity";
 import Image from "next/image";

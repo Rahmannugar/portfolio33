@@ -5,7 +5,6 @@ import {
   FaCalendarDay,
   FaCode,
   FaExternalLinkAlt,
-  FaCheckCircle,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Image from "next/image";

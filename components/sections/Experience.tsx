@@ -32,14 +32,6 @@ const Experience = ({ experiences }: ExperienceProps) => {
 
   const inView = useInView(sectionRef, { margin: "-100px" });
 
-  const articleRefs = useRef(
-    Array.from({ length: demoExperiences.length }, () =>
-      useRef<HTMLDivElement>(null)
-    )
-  );
-
-  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
-
   const [showOverlay, setShowOverlay] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [browser, setBrowser] = useState("unknown");
@@ -97,10 +89,9 @@ const Experience = ({ experiences }: ExperienceProps) => {
         {demoExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
-            ref={articleRefs.current[idx]}
             initial={{ y: 40, opacity: 0 }}
-            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={inView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.08 }}
             style={{ willChange: "opacity, transform" }}
             className={`
               cursor-pointer

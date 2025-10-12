@@ -43,7 +43,7 @@ const Projects = ({ projects }: ProjectsProps) => {
       <div className="relative mt-10">
         <ScrollStack>
           {demoProjects.map((project, idx) => (
-            <ScrollStackItem>
+            <ScrollStackItem key={project._id}>
               <motion.article
                 key={project._id}
                 initial={{ y: 40, opacity: 0 }}

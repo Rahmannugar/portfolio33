@@ -200,7 +200,7 @@ export default function DomeGallery({
       const w = Math.max(1, cr.width),
         h = Math.max(1, cr.height);
       const minDim = Math.min(w, h),
-        maxDim = Math.max(w, h),
+        //maxDim = Math.max(w, h),
         aspect = w / h;
       let basis: number;
       switch (fitBasis) {

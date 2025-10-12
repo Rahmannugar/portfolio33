@@ -3,7 +3,7 @@
 import CalForm from "../custom-ui/cal-embed";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaCode, FaSearch, FaLightbulb, FaPencilAlt } from "react-icons/fa";
+import { FaCode, FaSearch, FaPencilAlt } from "react-icons/fa";
 
 const heading = "Services";
 
@@ -53,12 +53,6 @@ const Services = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { margin: "-100px" });
 
-  const articleRefs = useRef(
-    Array.from({ length: services.length }, () => useRef<HTMLDivElement>(null))
-  );
-
-  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
-
   return (
     <section className="relative mt-40" id="services" ref={sectionRef}>
       <motion.h2
@@ -95,10 +89,9 @@ const Services = () => {
               text-white
                         ${idx === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-[50%] lg:col-span-1 lg:max-w-full" : ""}
             `}
-            ref={articleRefs.current[idx]}
             initial={{ y: 40, opacity: 0 }}
-            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={inView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.08 }}
             style={{ willChange: "opacity, transform" }}
           >
             {/* Icon and title */}
