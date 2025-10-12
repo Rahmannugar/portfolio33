@@ -7,7 +7,6 @@ import { FaCode, FaSearch, FaLightbulb, FaPencilAlt } from "react-icons/fa";
 
 const heading = "Services";
 
-// Service card data
 const services = [
   {
     id: 1,

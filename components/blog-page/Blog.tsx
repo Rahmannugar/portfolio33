@@ -120,6 +120,7 @@ const Blog = ({ blogArticles }: BlogArticlesProps) => {
               transition-all duration-300
               hover:bg-[#232222]
               active:bg-[#232222]
+               hover:shadow-lg hover:shadow-purple-300
             "
           >
             {/* Image container with overlay gradient */}
@@ -150,7 +151,6 @@ const Blog = ({ blogArticles }: BlogArticlesProps) => {
                 {truncateText(article.summary, MAX_SUMMARY_LENGTH)}
               </p>
 
-              {/* Read more link */}
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
@@ -181,7 +181,7 @@ const Blog = ({ blogArticles }: BlogArticlesProps) => {
                 pointerEvents: page === 1 ? "none" : undefined,
                 opacity: page === 1 ? 0.5 : 1,
               }}
-              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
+              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
           {Array.from({ length: totalPages }).map((_, i) => (
@@ -209,7 +209,7 @@ const Blog = ({ blogArticles }: BlogArticlesProps) => {
                 pointerEvents: page === totalPages ? "none" : undefined,
                 opacity: page === totalPages ? 0.5 : 1,
               }}
-              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
+              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
         </PaginationContent>

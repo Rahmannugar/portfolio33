@@ -111,6 +111,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
               transition-all duration-300
               hover:bg-[#232222]
               active:bg-[#232222]
+               hover:shadow-lg hover:shadow-purple-300
               ${idx === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-[50%] lg:col-span-1 lg:max-w-full" : ""}
             `}
           >

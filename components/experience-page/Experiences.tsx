@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Experience } from "@/lib/types/experience";
+import type { Experience } from "@/lib/types/experience";
 import Image from "next/image";
 import { urlFor } from "@/lib/services/sanity";
 import Link from "next/link";
@@ -112,7 +112,8 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                   px-6 py-8
                   transition-all duration-300
                   hover:bg-[#232222]
-                  active:bg-[#232222]  
+                  active:bg-[#232222]
+                   hover:shadow-lg hover:shadow-purple-300
                 `}
           >
             <div className="flex flex-col gap-2">
@@ -174,7 +175,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 pointerEvents: page === 1 ? "none" : undefined,
                 opacity: page === 1 ? 0.5 : 1,
               }}
-              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
+              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
           {Array.from({ length: totalPages }).map((_, i) => (
@@ -202,7 +203,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 pointerEvents: page === totalPages ? "none" : undefined,
                 opacity: page === totalPages ? 0.5 : 1,
               }}
-              className="!bg-transparent !text-white hover:!bg-[#232222] transition"
+              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
             />
           </PaginationItem>
         </PaginationContent>
