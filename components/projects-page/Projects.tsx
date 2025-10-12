@@ -15,12 +15,7 @@ import {
   PaginationPrevious,
   PaginationNext,
 } from "@/components/ui/pagination";
-import {
-  FaCalendarDay,
-  FaCode,
-  FaGithub,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
+import { FaCalendarDay, FaCode, FaExternalLinkAlt } from "react-icons/fa";
 
 interface ProjectsProps {
   projects: Project[];
@@ -56,12 +51,6 @@ const PER_PAGE = 6;
 const Projects = ({ projects }: ProjectsProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef);
-
-  const articleRefs = useRef(
-    Array.from({ length: projects.length }, () => useRef<HTMLDivElement>(null))
-  );
-
-  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
 
   // Pagination state
   const [page, setPage] = useState<number>(1);
@@ -99,14 +88,16 @@ const Projects = ({ projects }: ProjectsProps) => {
         ))}
       </motion.h1>
 
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 font-semibold relative z-20">
+      <div
+        key={page}
+        className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 font-semibold relative z-20"
+      >
         {paginatedProjects.map((project, idx) => (
           <motion.article
             key={project._id}
-            ref={articleRefs.current[idx]}
             initial={{ y: 40, opacity: 0 }}
-            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={inView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.08 }}
             style={{ willChange: "opacity, transform" }}
             className={`
                     flex flex-col gap-5 h-full w-full
@@ -116,7 +107,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                     px-6 py-8
                     transition-all duration-300
                     hover:bg-[#232222]
-                    hover:shadow-lg hover:shadow-purple-300
+                    hover:shadow-lg active:shadow-lg hover:shadow-purple-300 active:shadow-purple-300
                     group
                   `}
           >
@@ -144,7 +135,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                 src={urlFor(project.previewImage).url()}
                 alt={project.title}
                 fill
-                className="object-contain group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -154,7 +145,7 @@ const Projects = ({ projects }: ProjectsProps) => {
               <FaCalendarDay />
               <span>
                 {formatMonthYear(project.startDate)} –{" "}
-                {project.currentlyWorking && !project.endDate
+                {project.currentlyWorking
                   ? "Present"
                   : formatMonthYear(project.endDate)}
               </span>

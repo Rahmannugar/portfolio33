@@ -51,14 +51,6 @@ const Experiences = ({ experiences }: ExperienceProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef);
 
-  const articleRefs = useRef(
-    Array.from({ length: experiences.length }, () =>
-      useRef<HTMLDivElement>(null)
-    )
-  );
-
-  const articleInViews = articleRefs.current.map((ref) => useInView(ref));
-
   // Pagination state
   const [page, setPage] = useState<number>(1);
   const totalPages = Math.ceil(experiences.length / PER_PAGE);
@@ -98,10 +90,9 @@ const Experiences = ({ experiences }: ExperienceProps) => {
         {paginatedExperiences.map((exp, idx) => (
           <motion.article
             key={exp._id}
-            ref={articleRefs.current[idx]}
             initial={{ y: 40, opacity: 0 }}
-            animate={articleInViews[idx] ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            animate={inView ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.08 }}
             style={{ willChange: "opacity, transform" }}
             className={`
                   cursor-pointer
@@ -113,7 +104,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                   transition-all duration-300
                   hover:bg-[#232222]
                   active:bg-[#232222]
-                   hover:shadow-lg hover:shadow-purple-300
+                 hover:shadow-lg active:shadow-lg hover:shadow-purple-300 active:shadow-purple-300
                 `}
           >
             <div className="flex flex-col gap-2">
