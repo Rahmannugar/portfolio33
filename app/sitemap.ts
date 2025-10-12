@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getProjects } from "./lib/services/project";
-import { getExperience } from "./lib/services/experience";
+import { getProjects } from "@/lib/services/project";
+import { getExperience } from "@/lib/services/experience";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = await getProjects();

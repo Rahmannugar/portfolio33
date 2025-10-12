@@ -28,6 +28,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://rahmannugar.vercel.app",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "33 - Adenuga Abdulrahmon Portfolio",
+      },
+    ],
   },
   keywords: [
     "Adenuga Abdulrahmon",
