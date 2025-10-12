@@ -88,6 +88,7 @@ const Hero = () => {
             whileTap={{ scale: 1.5 }}
             href="https://www.github.com/Rahmannugar"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub size={30} />
           </motion.a>
@@ -96,6 +97,7 @@ const Hero = () => {
             whileTap={{ scale: 1.5 }}
             href="https://www.linkedin.com/in/Rahmannugar"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin size={30} />
           </motion.a>
@@ -104,6 +106,7 @@ const Hero = () => {
             whileTap={{ scale: 1.1 }}
             href="https://docs.google.com/document/d/1ibsZ8pXdPh5WeA22O7mXJTckm9-3OWxYASYGmaO8f68"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <button className="cursor-pointer bg-white py-2 px-5 rounded-full text-lg font-semibold text-black">
               View Resume

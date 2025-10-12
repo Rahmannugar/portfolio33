@@ -2,7 +2,7 @@ import { Blog } from "../types/blog";
 import { client } from "./sanity";
 import { blogQuery } from "../hooks/useBlog";
 
-export const getBlogs = async (): Promise<Blog[]> => {
+export const getBlog = async (): Promise<Blog[]> => {
   try {
     const blogs = await client.fetch<Blog[]>(blogQuery);
     // console.log("Fetched blogs:", blogs);

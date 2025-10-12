@@ -131,11 +131,11 @@ const Experience = ({ experiences }: ExperienceProps) => {
               />
             </motion.div>
             <div className="flex flex-col gap-2">
-              <h2 className="flex items-center gap-1">
+              <h2 className="flex items-center gap-2">
                 <FaLocationDot />
                 <span>{exp.location}</span>
               </h2>
-              <h2 className="flex items-center gap-1">
+              <h2 className="flex items-center gap-2">
                 <FaCalendarDays />
                 <span>
                   {formatMonthYear(exp.startDate)} –{" "}

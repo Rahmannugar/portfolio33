@@ -60,7 +60,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
   const articleInViews = articleRefs.current.map((ref) => useInView(ref));
 
   // Pagination state
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const totalPages = Math.ceil(experiences.length / PER_PAGE);
 
   const paginatedExperiences = experiences.slice(
@@ -132,11 +132,11 @@ const Experiences = ({ experiences }: ExperienceProps) => {
               />
             </motion.div>
             <div className="flex flex-col gap-2">
-              <h2 className="flex items-center gap-1">
+              <h2 className="flex items-center gap-2">
                 <FaLocationDot />
                 <span>{exp.location}</span>
               </h2>
-              <h2 className="flex items-center gap-1">
+              <h2 className="flex items-center gap-2">
                 <FaCalendarDays />
                 <span>
                   {formatMonthYear(exp.startDate)} –{" "}
@@ -161,8 +161,8 @@ const Experiences = ({ experiences }: ExperienceProps) => {
           </motion.article>
         ))}
       </div>
-      {/* Pagination Controls */}
 
+      {/* Pagination Controls */}
       <Pagination className="mt-12 bg-[#181818]/80 border border-[#232222] rounded-xl shadow-lg px-4 py-2 w-fit mx-auto">
         <PaginationContent>
           <PaginationItem>

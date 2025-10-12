@@ -48,11 +48,11 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
             <h2 className="text-2xl font-bold">{experience.position}</h2>
             <h3 className="text-lg font-semibold">{experience.company}</h3>
             <div className="flex flex-wrap gap-4 mt-2 justify-center md:justify-start text-sm text-gray-300">
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-2">
                 <FaLocationDot />
                 {experience.location}
               </span>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-2">
                 <FaCalendarDays />
                 {formatMonthYear(experience.startDate)} –{" "}
                 {experience.currentlyWorking && !experience.endDate

@@ -68,6 +68,7 @@ const Footer = () => {
                   <Link
                     href="mailto:cladeadenugar@gmail.com"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     Email
@@ -77,6 +78,7 @@ const Footer = () => {
                   <Link
                     href="https://www.github.com/Rahmannugar"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     Github
@@ -86,6 +88,7 @@ const Footer = () => {
                   <Link
                     href="https://www.linkedin.com/in/Rahmannugar"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     LinkedIn
@@ -95,6 +98,7 @@ const Footer = () => {
                   <Link
                     href="https://www.x.com/nugarRahman"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     Twitter

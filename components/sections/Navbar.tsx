@@ -202,6 +202,7 @@ const Navbar = () => {
                         <Link
                           href={item.link}
                           target="_blank"
+                          rel="noopener noreferrer"
                           onClick={closeMenu}
                           className="text-black block"
                         >
