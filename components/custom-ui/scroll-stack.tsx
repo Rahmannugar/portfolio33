@@ -45,8 +45,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   itemDistance = 10,
   itemScale = 0.03,
   itemStackDistance = 30,
-  stackPosition = "20%",
-  scaleEndPosition = "10%",
+  stackPosition = "0%",
+  scaleEndPosition = "0%",
   baseScale = 0.85,
   scaleDuration = 0.5,
   rotationAmount = 0,
@@ -363,7 +363,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         scrollbarWidth: "none", // Firefox
       }}
     >
-      <div className="scroll-stack-inner pt-[10vh] pb-[30vh] min-h-[120vh]">
+      <div className="scroll-stack-inner pb-[80vh] min-h-[200vh]">
         {children}
         <div className="scroll-stack-end w-full h-px" />
       </div>
