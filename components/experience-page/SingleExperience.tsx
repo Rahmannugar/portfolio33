@@ -55,7 +55,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
               <span className="flex items-center gap-1">
                 <FaCalendarDays />
                 {formatMonthYear(experience.startDate)} –{" "}
-                {experience.currentlyWorking
+                {experience.currentlyWorking && !experience.endDate
                   ? "Present"
                   : formatMonthYear(experience.endDate)}
               </span>
