@@ -98,7 +98,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                   cursor-pointer
                   flex flex-col gap-5 h-full w-full
                   bg-[#1e1d1d]
-                  text-[#cccbcb]
+                  text-white/85
                   rounded-lg
                   px-6 py-8
                   transition-all duration-300
@@ -109,8 +109,9 @@ const Experiences = ({ experiences }: ExperienceProps) => {
           >
             <div className="flex flex-col gap-2">
               <h2 className="text-lg">{exp.position}</h2>
-              <h2 className="text-lg">{exp.company}</h2>
+              <h2 className="">{exp.company}</h2>
             </div>
+
             <motion.div
               className="flex justify-center w-full items-center"
               whileHover={{ scale: 1.1 }}
@@ -123,7 +124,11 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 height={100}
               />
             </motion.div>
-            <div className="flex flex-col gap-2">
+
+            {/* Divider */}
+            <div className="h-[1px] w-full bg-white/40" />
+
+            <div className="flex flex-col text-sm gap-2">
               <h2 className="flex items-center gap-2">
                 <FaLocationDot />
                 <span>{exp.location}</span>

@@ -102,7 +102,7 @@ const Projects = ({ projects }: ProjectsProps) => {
             className={`
                     flex flex-col gap-5 h-full w-full
                     bg-[#1e1d1d]
-                    text-[#cccbcb]
+                    text-white/85
                     rounded-lg
                     px-6 py-8
                     transition-all duration-300
