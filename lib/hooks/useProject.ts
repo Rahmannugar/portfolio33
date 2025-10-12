@@ -8,7 +8,9 @@ link,
 images,
 languages,
 startDate,
-endDate
+endDate,
+  _createdAt,
+  _updatedAt
 }`;
 
 export const singleProjectQuery = `*[_type == "project" && _id == $id][0]{
@@ -21,5 +23,7 @@ title,
   images,
   languages,
   startDate,
-  endDate
+  endDate,
+  _createdAt,
+  _updatedAt
 }`;

@@ -57,7 +57,6 @@ const Profile = () => {
             hover:bg-white/20
             active:bg-white/20
             text-white
-            select-none
           "
           initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}

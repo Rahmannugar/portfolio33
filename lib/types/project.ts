@@ -10,4 +10,6 @@ export interface Project {
   startDate: string;
   currentlyWorking: boolean;
   endDate: string;
+  _createdAt: string;
+  _updatedAt: string;
 }

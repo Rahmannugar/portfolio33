@@ -7,7 +7,9 @@ export const experienceQuery = `*[_type == "experience"]| order(_createdAt desc)
   startDate,
   endDate,
   summary,
-  highlights
+  highlights,
+  _createdAt,
+  _updatedAt
 }`;
 
 export const singleExperienceQuery = `*[_type == "experience" && _id == $id][0]{
@@ -18,5 +20,7 @@ export const singleExperienceQuery = `*[_type == "experience" && _id == $id][0]{
   startDate,
   endDate,
   summary,
-  highlights
+  highlights,
+  _createdAt,
+  _updatedAt
 }`;

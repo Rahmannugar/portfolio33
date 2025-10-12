@@ -9,4 +9,6 @@ export interface Experience {
   endDate: string;
   summary: string;
   highlights: string[];
+  _createdAt: string;
+  _updatedAt: string;
 }
