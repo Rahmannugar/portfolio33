@@ -13,12 +13,12 @@ const services = [
     title: "Full-Stack Web Development",
     icon: <FaCode className="text-3xl" />,
     description:
-      "Designing and building end-to-end web applications — from polished, accessible UIs to robust backend services, APIs, databases, authentication, and deployment — focused on performance, reliability, and maintainability.",
+      "Designing and building end-to-end web applications; from polished, accessible UIs to robust backend services, and deployment.",
     features: [
-      "Frontend and backend application development",
-      "API and database architecture",
-      "Authentication, authorization, and integrations",
-      "Performance, scalability, and deployment",
+      "Full-stack application development",
+      "API services and database architecture",
+      "Third-party integrations",
+      "Performance, scalability, and security best practices",
     ],
   },
   {

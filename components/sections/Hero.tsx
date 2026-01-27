@@ -118,7 +118,7 @@ const Hero = () => {
       <div className="hidden lg:block lg:mt-[-40px]">
         <ProfileCard
           name="Adenuga Abdulrahmon"
-          title="Frontend Engineer"
+          title="Software Engineer"
           handle="rahmannugar"
           status="Online"
           contactText="Contact Me"
