@@ -33,7 +33,7 @@ const Profile = () => {
         <div className="lg:hidden flex justify-center w-full">
           <ProfileCard
             name="Adenuga Abdulrahmon"
-            title="Frontend Engineer"
+            title="Software Engineer"
             handle="rahmannugar"
             status="Online"
             showBehindGradient={false}
@@ -63,21 +63,20 @@ const Profile = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p>
-            I’m Abdulrahmon Adenuga, a frontend engineer who builds fast,
-            intuitive, and scalable web applications. I focus on crafting user
-            experiences that feel seamless while maintaining performance,
-            accessibility, and clean, maintainable architecture.
+            I’m Abdulrahmon Adenuga, a software engineer with full-stack
+            experience building scalable, high-performance web applications. I
+            specialize in building responsive user interfaces, integrating
+            reliable backend systems, and delivering production-ready solutions.
           </p>
           <p>
-            My core stack includes React, Next.js, TypeScript, and Node.js, but
+            My core stack includes TypeScript, Node.js, Next.js, React, PostgreSQL but
             I’m always exploring new technologies that help create better user
             experiences and more efficient development workflows. I care deeply
-            about thoughtful design, collaboration, and building products that
-            make a real impact.
+            about building products that make a real impact.
           </p>
 
           <p>
-            When I’m not writing code, I’m usually experimenting with new web
+            When I’m not writing code, I’m usually experimenting with new
             technologies, learning from open-source projects, or creating small
             tools that make development smoother and more enjoyable.
           </p>

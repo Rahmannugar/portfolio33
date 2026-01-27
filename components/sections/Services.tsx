@@ -10,15 +10,15 @@ const heading = "Services";
 const services = [
   {
     id: 1,
-    title: "Web Development & Design",
+    title: "Full-Stack Web Development",
     icon: <FaCode className="text-3xl" />,
     description:
-      "Building responsive, modern websites and applications that work across all devices and browsers.",
+      "Designing and building end-to-end web applications — from polished, accessible UIs to robust backend services, APIs, databases, authentication, and deployment — focused on performance, reliability, and maintainability.",
     features: [
-      "Custom website & application development",
-      "UI/UX implementation",
-      "Responsive design for all devices",
-      "Performance optimization",
+      "Frontend and backend application development",
+      "API and database architecture",
+      "Authentication, authorization, and integrations",
+      "Performance, scalability, and deployment",
     ],
   },
   {
@@ -28,10 +28,10 @@ const services = [
     description:
       "Improving your website's visibility in search engines to drive more organic traffic and reach more customers.",
     features: [
-      "Technical SEO audits",
-      "Performance & accessibility improvement",
-      "Content optimization strategies",
-      "SEO-friendly web development",
+      "Comprehensive technical SEO audits",
+      "Enhancing performance and accessibility",
+      "Content strategy and optimization",
+      "SEO-focused web development",
     ],
   },
   {
@@ -41,10 +41,10 @@ const services = [
     description:
       "Sharing expertise through documentation, articles, and direct consulting to help teams build better web products.",
     features: [
-      "Technical documentation",
-      "Developer-focused technical articles",
-      "Code reviews & architecture advice",
-      "Technology selection guidance",
+      "Clear and thorough technical documentation",
+      "Developer-focused articles and guides",
+      "Code reviews and architectural consulting",
+      "Guidance on technology selection",
     ],
   },
 ];

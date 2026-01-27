@@ -72,7 +72,7 @@ const Hero = () => {
           <Typewriter
             options={{
               strings: [
-                "Frontend engineer focused on crafting scalable, high-performance web applications with clean architecture and seamless user experiences.",
+                "Sofware engineer focused on crafting scalable, high-performance web applications with clean architecture and seamless user experiences.",
               ],
               autoStart: true,
               loop: false,
