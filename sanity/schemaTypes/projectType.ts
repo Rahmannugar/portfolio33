@@ -44,10 +44,11 @@ export const projectType = defineType({
       title: "Images",
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
+      validation: (rule) => rule.max(6),
     }),
     defineField({
-      name: "languages",
-      title: "Languages",
+      name: "technologies",
+      title: "Technologies",
       type: "array",
       of: [{ type: "string" }],
       validation: (rule) => rule.required().min(1),

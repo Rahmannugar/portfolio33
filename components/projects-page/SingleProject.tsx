@@ -62,12 +62,12 @@ const SingleProject = ({ project }: SingleProjectProps) => {
           </div>
         )}
 
-        {/* Languages/Technologies */}
-        {project.languages && project.languages.length > 0 && (
+        {/* Technologies Used */}
+        {project.technologies && project.technologies.length > 0 && (
           <div>
             <h2 className="text-xl font-semibold mb-2">Technologies Used</h2>
             <div className="flex flex-wrap gap-2">
-              {project.languages.map((lang, i) => (
+              {project.technologies.map((lang, i) => (
                 <span
                   key={i}
                   className="text-xs py-1 px-3 bg-white/10 rounded-full backdrop-blur-sm border border-white/10"

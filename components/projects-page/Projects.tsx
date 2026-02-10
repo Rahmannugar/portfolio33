@@ -58,7 +58,7 @@ const Projects = ({ projects }: ProjectsProps) => {
 
   const paginatedProjects = projects.slice(
     (page - 1) * PER_PAGE,
-    page * PER_PAGE
+    page * PER_PAGE,
   );
 
   const handlePageChange = (newPage: number) => {
@@ -114,8 +114,8 @@ const Projects = ({ projects }: ProjectsProps) => {
             <div className="flex flex-col gap-2 items-start">
               <h2 className="text-xl font-bold text-white">{project.title}</h2>
               <div className="flex gap-2">
-                {project.languages &&
-                  project.languages.slice(0, 3).map((lang, i) => (
+                {project.technologies &&
+                  project.technologies.slice(0, 3).map((lang, i) => (
                     <span
                       key={i}
                       className="text-xs py-1 px-2 bg-white/10 rounded-full backdrop-blur-sm"
@@ -212,9 +212,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                   onClick={() => handlePageChange(i + 1)}
                   href="#"
                   className={`bg-transparent text-white hover:bg-[#232222] transition ${
-                    page === i + 1
-                      ? "border-white text-white bg-[#232222]"
-                      : ""
+                    page === i + 1 ? "border-white text-white bg-[#232222]" : ""
                   }`}
                 >
                   {i + 1}

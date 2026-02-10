@@ -6,7 +6,7 @@ export interface Project {
   highlights: string[];
   link: string;
   images: string[];
-  languages: string[];
+  technologies: string[];
   startDate: string;
   currentlyWorking: boolean;
   endDate: string;
