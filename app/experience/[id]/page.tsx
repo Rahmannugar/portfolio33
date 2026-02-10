@@ -2,8 +2,13 @@ import SingleExperience from "@/components/experience-page/SingleExperience";
 import { getExperienceById } from "@/lib/services/experience";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const experience = await getExperienceById(params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const experience = await getExperienceById(id);
   if (!experience) return { title: "Experience" };
   return {
     title: experience.company,
@@ -11,8 +16,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-const SingleExperiencePage = async ({ params }: { params: { id: string } }) => {
-  const experience = await getExperienceById(params.id);
+const SingleExperiencePage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
+  const experience = await getExperienceById(id);
   if (!experience) return notFound();
 
   return (

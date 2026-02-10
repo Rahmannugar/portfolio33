@@ -1,12 +1,8 @@
 "use client";
 
 import { Project } from "@/lib/types/project";
-import {
-  FaCalendarDay,
-  FaCode,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
+import { FaCalendarDay, FaCode, FaExternalLinkAlt } from "react-icons/fa";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/lib/services/sanity";
@@ -45,7 +41,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 700px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
         </div>
 
         {/* Description */}
@@ -91,7 +87,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
               {project.images.map((img, idx) => (
                 <div
                   key={idx}
-                  className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-white/10"
+                  className="relative w-full aspect-4/3 rounded-lg overflow-hidden border border-white/10"
                 >
                   <Image
                     src={urlFor(img).url()}

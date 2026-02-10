@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import type { Experience } from "@/lib/types/experience";
 import Image from "next/image";
 import { urlFor } from "@/lib/services/sanity";

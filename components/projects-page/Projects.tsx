@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import type { Project } from "@/lib/types/project";
 import Image from "next/image";
 import { urlFor } from "@/lib/services/sanity";
@@ -138,7 +138,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
 
             <div className="flex items-center gap-2 text-sm text-white/70">
@@ -202,7 +202,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                   pointerEvents: page === 1 ? "none" : undefined,
                   opacity: page === 1 ? 0.5 : 1,
                 }}
-                className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
+                className="bg-transparent cursor-pointer text-white hover:bg-[#232222] transition"
               />
             </PaginationItem>
             {Array.from({ length: totalPages }).map((_, i) => (
@@ -211,9 +211,9 @@ const Projects = ({ projects }: ProjectsProps) => {
                   isActive={page === i + 1}
                   onClick={() => handlePageChange(i + 1)}
                   href="#"
-                  className={`!bg-transparent !text-white hover:!bg-[#232222] transition ${
+                  className={`bg-transparent text-white hover:bg-[#232222] transition ${
                     page === i + 1
-                      ? "!border-white !text-white !bg-[#232222]"
+                      ? "border-white text-white bg-[#232222]"
                       : ""
                   }`}
                 >
@@ -230,7 +230,7 @@ const Projects = ({ projects }: ProjectsProps) => {
                   pointerEvents: page === totalPages ? "none" : undefined,
                   opacity: page === totalPages ? 0.5 : 1,
                 }}
-                className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
+                className="bg-transparent cursor-pointer text-white hover:bg-[#232222] transition"
               />
             </PaginationItem>
           </PaginationContent>

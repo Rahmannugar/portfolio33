@@ -9,13 +9,13 @@ export const experienceType = defineType({
       name: "position",
       title: "Position",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "company",
       title: "Company",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "image",
@@ -24,33 +24,33 @@ export const experienceType = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "location",
       title: "Location",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "startDate",
       title: "Start Date",
       type: "date",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "currentlyWorking",
       title: "Currently Working Here?",
       type: "boolean",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
       initialValue: false,
     }),
     defineField({
       name: "endDate",
       title: "End Date",
       type: "date",
-      validation: (Rule) =>
-        Rule.custom((endDate, context) => {
+      validation: (rule) =>
+        rule.custom((endDate, context) => {
           const currentlyWorking = (context.parent as any)?.currentlyWorking;
           if (!currentlyWorking && !endDate) {
             return "End Date is required if not currently working here";
@@ -65,14 +65,14 @@ export const experienceType = defineType({
       name: "summary",
       title: "Summary",
       type: "text",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "highlights",
       title: "Highlights",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (rule) => rule.required().min(1),
     }),
   ],
 });

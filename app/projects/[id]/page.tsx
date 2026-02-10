@@ -2,8 +2,13 @@ import SingleProject from "@/components/projects-page/SingleProject";
 import { getProjectById } from "@/lib/services/project";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const project = await getProjectById(params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const project = await getProjectById(id);
   if (!project) return { title: "Project" };
   return {
     title: project.title,
@@ -11,8 +16,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-const SingleProjectPage = async ({ params }: { params: { id: string } }) => {
-  const project = await getProjectById(params.id);
+const SingleProjectPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
+  const project = await getProjectById(id);
   if (!project) return notFound();
 
   return (

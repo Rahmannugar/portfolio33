@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlurText from "../custom-ui/blur-text";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";

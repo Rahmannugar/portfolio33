@@ -2,7 +2,7 @@
 
 import { Experience } from "@/lib/types/experience";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
 import { urlFor } from "@/lib/services/sanity";
 import Image from "next/image";
@@ -21,7 +21,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
           <motion.div
-            className="flex-shrink-0"
+            className="shrink-0"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 1.08 }}
           >
@@ -53,7 +53,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
         </div>
 
         {/* Divider */}
-        <div className="h-[1px] bg-white/40 w-full my-2" />
+        <div className="h-px bg-white/40 w-full my-2" />
 
         {/* Summary */}
         <div>

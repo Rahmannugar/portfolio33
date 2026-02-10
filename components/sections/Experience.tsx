@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import GlassPill from "../custom-ui/glass-surface/GlassPill";
 import Image from "next/image";
 import Link from "next/link";

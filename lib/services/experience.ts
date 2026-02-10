@@ -14,12 +14,13 @@ export const getExperience = async (): Promise<Experience[]> => {
 };
 
 export const getExperienceById = async (
-  id: string
+  id: string,
 ): Promise<Experience | null> => {
+  if (!id) return null;
   try {
     const experience = await client.fetch<Experience | null>(
       singleExperienceQuery,
-      { id }
+      { id },
     );
     // console.log("Fetched experience by ID:", experience);
     return experience;

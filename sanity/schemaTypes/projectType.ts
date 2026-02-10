@@ -9,7 +9,7 @@ export const projectType = defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "previewImage",
@@ -18,26 +18,26 @@ export const projectType = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
       type: "text",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "highlights",
       title: "Highlights",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: "link",
       title: "Link",
       type: "url",
-      validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
+      validation: (rule) => rule.required().uri({ scheme: ["http", "https"] }),
     }),
     defineField({
       name: "images",
@@ -50,27 +50,27 @@ export const projectType = defineType({
       title: "Languages",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: "startDate",
       title: "Start Date",
       type: "date",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "currentlyWorking",
       title: "Currently Working On This Project?",
       type: "boolean",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
       initialValue: false,
     }),
     defineField({
       name: "endDate",
       title: "End Date",
       type: "date",
-      validation: (Rule) =>
-        Rule.custom((endDate, context) => {
+      validation: (rule) =>
+        rule.custom((endDate, context) => {
           const currentlyWorking = (context.parent as any)?.currentlyWorking;
           if (!currentlyWorking && !endDate) {
             return "End Date is required if not currently working on this project";

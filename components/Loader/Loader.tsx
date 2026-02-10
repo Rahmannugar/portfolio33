@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 
 const Loader = ({ isLoading }: { isLoading: boolean }) => {
@@ -16,7 +16,7 @@ const Loader = ({ isLoading }: { isLoading: boolean }) => {
           }}
         >
           <motion.div
-          className="mt-[-100px]"
+            className="mt-[-100px]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

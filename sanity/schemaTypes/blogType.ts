@@ -9,7 +9,7 @@ export const blogType = defineType({
       name: "title",
       title: "Blog Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "image",
@@ -18,25 +18,25 @@ export const blogType = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "summary",
       title: "Blog Summary",
       type: "text",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "link",
       title: "Blog Link",
       type: "url",
-      validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
+      validation: (rule) => rule.required().uri({ scheme: ["http", "https"] }),
     }),
     defineField({
       name: "publishedAt",
       title: "Published At",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
   ],
 });

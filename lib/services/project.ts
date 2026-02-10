@@ -14,6 +14,7 @@ export const getProjects = async (): Promise<Project[]> => {
 };
 
 export const getProjectById = async (id: string): Promise<Project | null> => {
+  if (!id) return null;
   try {
     const project = await client.fetch<Project | null>(singleProjectQuery, {
       id,

@@ -1,6 +1,6 @@
 "use client";
 import type { Blog } from "@/lib/types/blog";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { formatFullDate } from "@/lib/utils/dateFormatter";
 import {

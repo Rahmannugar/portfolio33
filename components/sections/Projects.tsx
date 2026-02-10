@@ -1,7 +1,7 @@
 "use client";
 
 import type { Project } from "@/lib/types/project";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import ScrollStack, { ScrollStackItem } from "../custom-ui/scroll-stack";
 import Image from "next/image";

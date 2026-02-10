@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import ProfileCard from "../custom-ui/profile-card/profile-card";

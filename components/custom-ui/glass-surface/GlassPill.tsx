@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import GlassSurface from "./glass-pill";
 
 interface GlassPillProps {

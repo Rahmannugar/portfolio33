@@ -3,7 +3,7 @@
 import ProfileCard from "../custom-ui/profile-card/profile-card";
 import { handleContactClick } from "./Hero";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 
 const heading = "About Me";
 
@@ -69,10 +69,11 @@ const Profile = () => {
             reliable backend systems, and delivering production-ready solutions.
           </p>
           <p>
-            My core stack includes TypeScript, Node.js, Next.js, React, PostgreSQL but
-            I’m always exploring new technologies that help create better user
-            experiences and more efficient development workflows. I care deeply
-            about building products that make a real impact.
+            My core stack includes TypeScript, Node.js, Next.js, React,
+            PostgreSQL but I’m always exploring new technologies that help
+            create better user experiences and more efficient development
+            workflows. I care deeply about building products that make a real
+            impact.
           </p>
 
           <p>

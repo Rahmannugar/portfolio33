@@ -2,7 +2,7 @@
 
 import CalForm from "../custom-ui/cal-embed";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import { FaCode, FaSearch, FaPencilAlt } from "react-icons/fa";
 
 const heading = "Services";
