@@ -13,6 +13,7 @@ interface SingleProjectProps {
 }
 
 const SingleProject = ({ project }: SingleProjectProps) => {
+  console.log(project);
   return (
     <section>
       <div className="max-w-3xl bg-[#1e1d1d] rounded-2xl shadow-xl border border-[#232222]/60 p-8 flex flex-col gap-10 text-white/90">
