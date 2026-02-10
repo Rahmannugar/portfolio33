@@ -1,7 +1,7 @@
 import Blog from "@/components/blog-page/Blog";
 import { getBlog } from "@/lib/services/blog";
 
-export const revalidate = 86400; // Revalidate every 24 hours
+export const revalidate = 3600; // Revalidate every 1 hour
 const blogArticles = await getBlog();
 
 const BlogPage = async () => {

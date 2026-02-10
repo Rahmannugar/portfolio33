@@ -8,7 +8,7 @@ import { getExperience } from "@/lib/services/experience";
 import { getProjects } from "@/lib/services/project";
 import Projects from "@/components/sections/Projects";
 
-export const revalidate = 60 * 60; // Revalidate every 1 hour
+export const revalidate = 3600; // Revalidate every 1 hour
 
 async function HomePage() {
   const skills = await getSkills();
