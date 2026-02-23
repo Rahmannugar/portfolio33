@@ -136,9 +136,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
                 <FaCalendarDays />
                 <span>
                   {formatMonthYear(exp.startDate)} –{" "}
-                  {exp.currentlyWorking && !exp.endDate
-                    ? "Present"
-                    : formatMonthYear(exp.endDate)}
+                  {exp.endDate ? formatMonthYear(exp.endDate) : "Present"}
                 </span>
               </h2>
             </div>

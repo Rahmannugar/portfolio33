@@ -58,7 +58,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
 
   const paginatedExperiences = experiences.slice(
     (page - 1) * PER_PAGE,
-    page * PER_PAGE
+    page * PER_PAGE,
   );
 
   const handlePageChange = (newPage: number) => {
@@ -138,9 +138,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 <FaCalendarDays />
                 <span>
                   {formatMonthYear(exp.startDate)} –{" "}
-                  {exp.currentlyWorking && !exp.endDate
-                    ? "Present"
-                    : formatMonthYear(exp.endDate)}
+                  {exp.endDate ? formatMonthYear(exp.endDate) : "Present"}
                 </span>
               </h2>
             </div>

@@ -1,10 +1,11 @@
-export const experienceQuery = `*[_type == "experience"]| order(_createdAt desc){
+export const experienceQuery = `*[_type == "experience"]| order(startDate desc){
   _id,
   position,
   company,
   image,
   location,
   startDate,
+  currentlyWorking,
   endDate,
   summary,
   highlights,
@@ -14,10 +15,12 @@ export const experienceQuery = `*[_type == "experience"]| order(_createdAt desc)
 
 export const singleExperienceQuery = `*[_type == "experience" && _id == $id][0]{
   _id,
+  position,
   company,
   image,
   location,
   startDate,
+  currentlyWorking,
   endDate,
   summary,
   highlights,
