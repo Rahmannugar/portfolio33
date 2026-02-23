@@ -69,17 +69,16 @@ const Profile = () => {
             reliable backend systems, and delivering production-ready solutions.
           </p>
           <p>
-            My core stack includes TypeScript, Node.js, Next.js, React,
-            PostgreSQL but I’m always exploring new technologies that help
-            create better user experiences and more efficient development
-            workflows. I care deeply about building products that make a real
-            impact.
+            I primarily work with TypeScript, React, Next.js, and Node.js,
+            alongside PostgreSQL, MongoDB, and Redis. I care about writing
+            clear, maintainable code and building systems that hold up under
+            real-world usage.
           </p>
 
           <p>
             When I’m not writing code, I’m usually experimenting with new
-            technologies, learning from open-source projects, or creating small
-            tools that make development smoother and more enjoyable.
+            technologies, learning from open-source projects, or building tools
+            that make development smoother and more enjoyable.
           </p>
         </motion.article>
       </div>
