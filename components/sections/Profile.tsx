@@ -63,22 +63,14 @@ const Profile = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p>
-            I’m Abdulrahmon Adenuga, a software engineer with full-stack
-            experience building scalable, high-performance web applications. I
-            specialize in building responsive user interfaces, integrating
-            reliable backend systems, and delivering production-ready solutions.
+        I’m Abdulrahmon Adenuga, a software engineer with experience building scalable, high-performance systems across the stack. I design and develop responsive frontends and reliable backend systems, with a focus on clean architecture, performance, and long-term maintainability. My work includes building distributed systems and delivering production-ready software.
           </p>
           <p>
-            I primarily work with TypeScript, React, Next.js, and Node.js,
-            alongside PostgreSQL, MongoDB, and Redis. I care about writing
-            clear, maintainable code and building systems that hold up under
-            real-world usage.
+           I primarily work with TypeScript, using React and Next.js on the frontend, and Node.js for backend systems, alongside PostgreSQL for data storage. I care about writing clear, maintainable code and building systems that remain stable as they grow.
           </p>
 
           <p>
-            When I’m not writing code, I’m usually experimenting with new
-            technologies, learning from open-source projects, or building tools
-            that make development smoother and more enjoyable.
+Outside of work, I spend time exploring new technologies, learning from open-source projects, and building tools that improve developer workflows.
           </p>
         </motion.article>
       </div>
