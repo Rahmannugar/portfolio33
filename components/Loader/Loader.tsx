@@ -30,6 +30,7 @@ const Loader = ({ isLoading }: { isLoading: boolean }) => {
               width={100}
               height={100}
               className="mb-8"
+              loading="eager"
               priority
             />
           </motion.div>

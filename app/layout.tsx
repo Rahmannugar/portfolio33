@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { LoadingProvider } from "@/components/Loader/LoadingProvider";
 import { Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import LayoutClient from "./LayoutClient";
 import Background from "@/components/custom-ui/background";
 
@@ -59,19 +60,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics script */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-HH07HBY3GB`}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HH07HBY3GB"
+          strategy="afterInteractive"
         />
-        <script>
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-HH07HBY3GB');
           `}
-        </script>
+        </Script>
       </head>
       <body className={`${spaceGrotesk.className} antialiased`}>
         <Background />

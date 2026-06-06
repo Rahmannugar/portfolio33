@@ -123,6 +123,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                 alt={exp.company}
                 width={100}
                 height={100}
+                style={{ width: "auto", height: "auto" }}
               />
             </motion.div>
 

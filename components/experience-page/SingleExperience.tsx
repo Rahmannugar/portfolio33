@@ -31,6 +31,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
               width={100}
               height={100}
               className="rounded-xl border border-[#232222]/50 bg-[#181818] object-contain"
+              style={{ width: "auto", height: "auto" }}
             />
           </motion.div>
           <div className="flex flex-col gap-1 text-center md:text-left">

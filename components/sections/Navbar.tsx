@@ -5,7 +5,7 @@ import Link from "next/link";
 import BlurText from "../custom-ui/blur-text";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { usePathname } from "next/navigation";
@@ -65,7 +65,14 @@ const Navbar = () => {
               ease: "easeOut",
             }}
           >
-            <Image src="/33.png" alt="Logo" priority width={50} height={50} />
+            <Image
+              src="/33.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              loading="eager"
+              priority
+            />
           </motion.div>
         </Link>
 
@@ -141,33 +148,52 @@ const Navbar = () => {
               onClick={closeMenu}
             />
             <motion.div
-              className="fixed top-0 left-0 h-full w-[70%] bg-purple-400 p-8 z-40 md:hidden overflow-y-auto"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
+              className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-purple-400 px-8 pb-10 pt-24 [will-change:clip-path,opacity] md:hidden"
+              initial={{
+                opacity: 0,
+                clipPath: "circle(20px at calc(100% - 3.25rem) 3.25rem)",
+              }}
+              animate={{
+                opacity: 1,
+                clipPath: "circle(155% at calc(100% - 3.25rem) 3.25rem)",
+              }}
+              exit={{
+                opacity: 0,
+                clipPath: "circle(20px at calc(100% - 3.25rem) 3.25rem)",
+              }}
               transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 200,
+                duration: 0.78,
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <div className="mt-16 space-y-20">
-                <ul className="space-y-6">
+              <button
+                type="button"
+                onClick={closeMenu}
+                className="absolute right-8 top-8 z-50 cursor-pointer text-black transition-transform duration-200 hover:scale-110"
+                aria-label="Close menu"
+              >
+                <FaTimes size={28} />
+              </button>
+
+              <div className="flex min-h-full flex-col">
+                <ul className="grid flex-1 place-content-center justify-items-center gap-12 text-center">
                   {menuItems.map((item, index) => (
                     <motion.li
                       key={item.label}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
+                      animate={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: 10, filter: "blur(6px)" }}
                       transition={{
-                        delay: 0.2 + index * 0.1,
-                        duration: 0.3,
+                        delay: 0.18 + index * 0.075,
+                        duration: 0.58,
+                        ease: [0.22, 1, 0.36, 1],
                       }}
-                      className="text-3xl uppercase font-bold"
+                      className="text-[clamp(2.15rem,9vw,3rem)] font-bold leading-[1]"
                     >
                       <Link
                         href={item.link}
                         onClick={closeMenu}
-                        className="text-black"
+                        className="text-black/80 transition-colors hover:text-black"
                       >
                         {item.label}
                       </Link>
@@ -175,41 +201,31 @@ const Navbar = () => {
                   ))}
                 </ul>
 
-                <div>
-                  <motion.h3
-                    className="text-white font-bold mb-4"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.1 + menuItems.length * 0.1,
-                      duration: 0.3,
-                    }}
-                  >
-                    Socials
-                  </motion.h3>
-                  <div className="flex space-x-6">
-                    {socialItems.map((item, index) => (
-                      <motion.span
-                        key={item.label}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          delay: (menuItems.length + 1 + index) * 0.1,
-                          duration: 0.3,
-                        }}
+                <div className="mt-auto flex flex-wrap justify-center gap-8 pb-2">
+                  {socialItems.map((item, index) => (
+                    <motion.span
+                      key={item.label}
+                      initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.96 }}
+                      transition={{
+                        delay: 0.34 + index * 0.05,
+                        duration: 0.42,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      <Link
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMenu}
+                        className="block text-black transition-transform duration-200 hover:scale-110"
+                        aria-label={item.label}
                       >
-                        <Link
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={closeMenu}
-                          className="text-black block"
-                        >
-                          {item.icon}
-                        </Link>
-                      </motion.span>
-                    ))}
-                  </div>
+                        {item.icon}
+                      </Link>
+                    </motion.span>
+                  ))}
                 </div>
               </div>
             </motion.div>

@@ -29,7 +29,7 @@ const Profile = () => {
         />
       </motion.h2>
 
-      <div className="flex flex-col items-start justify-between lg:justify-center gap-10 md:flex-row mt-10">
+      <div className="mt-10 grid gap-8 lg:grid-cols-[0.85fr_1.4fr] lg:items-start">
         <div className="lg:hidden flex justify-center w-full">
           <ProfileCard
             name="Adenuga Abdulrahmon"
@@ -46,31 +46,29 @@ const Profile = () => {
           />
         </div>
         <motion.article
-          className="cursor-pointer
-            flex flex-col gap-6 md:text-sm lg:text-lg font-semibold
-            bg-white/30 border border-white/20
-            rounded-2xl
-            px-6 py-8 md:px-10 md:py-10
-            backdrop-blur-[5px]
-            w-full
-            transition-all duration-300
-            hover:bg-white/20
-            active:bg-white/20
-            text-white
-          "
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
-          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          className="lg:col-start-2 grid gap-6 border-y border-white/20 py-8 text-white"
+          initial={{ opacity: 0, x: 90, scale: 0.98 }}
+          animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p>
-        I’m Abdulrahmon Adenuga, a software engineer with experience building scalable, high-performance systems across the stack. I design and develop responsive frontends and reliable backend systems, with a focus on clean architecture, performance, and long-term maintainability. My work includes building distributed systems and delivering production-ready software.
+          <p className="text-xl font-semibold leading-relaxed md:text-2xl">
+            I’m Abdulrahmon Adenuga, a software engineer with experience
+            building scalable, high-performance systems across the stack. I
+            design and develop responsive frontends and reliable backend
+            systems, with a focus on clean architecture, performance, and
+            long-term maintainability.
           </p>
-          <p>
-           I primarily work with TypeScript, using React and Next.js on the frontend, and Node.js for backend systems, alongside PostgreSQL for data storage. I care about writing clear, maintainable code and building systems that remain stable as they grow.
+          <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
+            I primarily work with TypeScript, using React on the
+            frontend, and Node.js for backend systems, alongside PostgreSQL for
+            data storage. I care about writing clear, maintainable code and
+            building systems that remain stable as they grow.
           </p>
 
-          <p>
-Outside of work, I spend time exploring new technologies, learning from open-source projects, and building tools that improve developer workflows.
+          <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
+            Outside of work, I spend time exploring new technologies, learning
+            from open-source projects, and building tools that improve
+            developer workflows.
           </p>
         </motion.article>
       </div>
