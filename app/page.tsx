@@ -1,4 +1,3 @@
-import Services from "@/components/sections/Services";
 import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
 import Profile from "@/components/sections/Profile";
@@ -22,7 +21,6 @@ async function HomePage() {
       <Skills skills={skills} />
       <Experience experiences={experiences} />
       <Projects projects={projects} />
-      <Services />
     </main>
   );
 }

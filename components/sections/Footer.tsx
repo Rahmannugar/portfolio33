@@ -24,10 +24,6 @@ const Footer = () => {
       link: pathname === "/" ? "/#projects" : "/projects",
     },
     {
-      label: "Services",
-      link: "/#services",
-    },
-    {
       label: "Blog",
       link: "/blog",
     },
