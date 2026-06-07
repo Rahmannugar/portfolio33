@@ -102,7 +102,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
           >
             <div>
               <motion.div
-                className="flex h-16 w-16 items-center justify-center rounded-lg border border-white/10 bg-white/5"
+                className="flex h-20 w-20 items-center justify-center rounded-lg border border-white/10 bg-white/5"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 1.08 }}
               >
@@ -111,7 +111,7 @@ const Experiences = ({ experiences }: ExperienceProps) => {
                   alt={exp.company}
                   width={100}
                   height={100}
-                  className="max-h-12 max-w-12 object-contain"
+                  className="max-h-16 max-w-16 object-contain"
                   style={{ width: "auto", height: "auto" }}
                 />
               </motion.div>
