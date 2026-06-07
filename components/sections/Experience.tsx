@@ -114,7 +114,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
 
             <div className="grid gap-4">
               <div>
-                <h2 className="text-3xl font-bold leading-tight text-white md:text-4xl">
+                <h2 className="text-2xl font-bold leading-tight text-white md:text-3xl">
                   {exp.position}
                 </h2>
                 <h2 className="mt-1 text-lg text-white/70">{exp.company}</h2>

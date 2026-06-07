@@ -100,7 +100,7 @@ const Projects = ({ projects }: ProjectsProps) => {
           >
             <div className="order-2 flex flex-col justify-between gap-8 lg:order-1">
               <div className="grid gap-4">
-                <h2 className="text-3xl font-bold text-white md:text-4xl">
+                <h2 className="text-2xl font-bold text-white md:text-3xl">
                   {project.title}
                 </h2>
                 <div className="flex flex-wrap gap-2">

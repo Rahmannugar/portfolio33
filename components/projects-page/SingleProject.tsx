@@ -43,7 +43,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
               Back to projects
             </Link>
 
-            <h1 className="text-5xl font-bold leading-none text-white md:text-7xl">
+            <h1 className="text-4xl font-bold leading-none text-white md:text-5xl">
               {project.title}
             </h1>
 
@@ -139,7 +139,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
         <div className="grid gap-10">
           <div>
             <h2 className="mb-3 text-xl font-semibold">Description</h2>
-            <p className="text-base leading-8 text-white/75">
+            <p className="text-sm leading-8 text-white/75">
               {project.description}
             </p>
           </div>
@@ -151,7 +151,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
                 {project.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className="border-t border-white/10 py-3 text-white/75"
+                    className="border-t border-white/10 py-3 text-sm text-white/75"
                   >
                     {highlight}
                   </li>

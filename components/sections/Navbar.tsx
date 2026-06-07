@@ -5,7 +5,7 @@ import Link from "next/link";
 import BlurText from "../custom-ui/blur-text";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { usePathname } from "next/navigation";
@@ -141,54 +141,48 @@ const Navbar = () => {
         {isOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              className="fixed inset-0 z-30 bg-black/50 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
             />
             <motion.div
-              className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-purple-400 px-8 pb-10 pt-24 [will-change:clip-path,opacity] md:hidden"
+              className="fixed inset-y-0 left-0 z-40 flex w-[76vw] max-w-[26rem] flex-col overflow-hidden border-r border-black/15 bg-purple-400 px-8 pb-10 pt-32 shadow-2xl [will-change:transform,opacity] md:hidden"
               initial={{
                 opacity: 0,
-                clipPath: "circle(20px at calc(100% - 3.25rem) 3.25rem)",
+                x: "-100%",
+                scaleX: 0.96,
               }}
               animate={{
                 opacity: 1,
-                clipPath: "circle(155% at calc(100% - 3.25rem) 3.25rem)",
+                x: 0,
+                scaleX: 1,
               }}
               exit={{
                 opacity: 0,
-                clipPath: "circle(20px at calc(100% - 3.25rem) 3.25rem)",
+                x: "-100%",
+                scaleX: 0.98,
               }}
               transition={{
-                duration: 0.78,
+                duration: 0.62,
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <button
-                type="button"
-                onClick={closeMenu}
-                className="absolute right-8 top-8 z-50 cursor-pointer text-black transition-transform duration-200 hover:scale-110"
-                aria-label="Close menu"
-              >
-                <FaTimes size={28} />
-              </button>
-
               <div className="flex min-h-full flex-col">
-                <ul className="grid flex-1 place-content-center justify-items-center gap-12 text-center">
+                <ul className="grid flex-1 place-content-center justify-items-center gap-10 text-center">
                   {menuItems.map((item, index) => (
                     <motion.li
                       key={item.label}
-                      initial={{ opacity: 0, y: 26, filter: "blur(8px)" }}
-                      animate={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: 10, filter: "blur(6px)" }}
+                      initial={{ opacity: 0, x: 36, filter: "blur(8px)" }}
+                      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, x: 18, filter: "blur(6px)" }}
                       transition={{
-                        delay: 0.18 + index * 0.075,
-                        duration: 0.58,
+                        delay: 0.14 + index * 0.07,
+                        duration: 0.5,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className="text-[clamp(2.15rem,9vw,3rem)] font-bold leading-[1]"
+                      className="text-[clamp(1.9rem,8vw,2.65rem)] font-bold leading-[1]"
                     >
                       <Link
                         href={item.link}

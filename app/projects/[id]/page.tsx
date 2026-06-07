@@ -2,8 +2,6 @@ import SingleProject from "@/components/projects-page/SingleProject";
 import { notFound } from "next/navigation";
 import { getProjectById } from "@/lib/services/project";
 
-export const revalidate = 3600; // Revalidate every 1 hour
-
 export async function generateMetadata({
   params,
 }: {

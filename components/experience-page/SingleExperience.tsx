@@ -52,10 +52,10 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
           </div>
 
           <div className="grid gap-4">
-            <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl">
+            <h1 className="text-2xl font-bold leading-tight text-white md:text-4xl">
               {experience.position}
             </h1>
-            <h2 className="text-2xl font-semibold text-white/70">
+            <h2 className="text-xl font-semibold text-white/70">
               {experience.company}
             </h2>
           </div>
@@ -78,7 +78,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
 
           <div className="grid gap-3 rounded-lg border border-white/10 bg-black/15 p-5">
             <h2 className="text-xl font-semibold text-white">Summary</h2>
-            <p className="text-base leading-8 text-white/75">
+            <p className="text-sm leading-8 text-white/75">
               {experience.summary}
             </p>
           </div>
@@ -102,7 +102,7 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
               <motion.li
                 key={highlight}
                 whileHover={{ x: 6 }}
-                className="cursor-pointer rounded-lg border border-white/10 bg-white/5 p-5 text-base leading-8 text-white/75 transition-all duration-300 hover:border-white/25 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-300 active:bg-white/10 active:shadow-lg active:shadow-purple-300"
+                className="cursor-pointer rounded-lg border border-white/10 bg-white/5 p-5 text-sm leading-8 text-white/75 transition-all duration-300 hover:border-white/25 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-300 active:bg-white/10 active:shadow-lg active:shadow-purple-300"
               >
                 {highlight}
               </motion.li>
