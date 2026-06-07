@@ -45,9 +45,9 @@ const letterVariants = {
 };
 
 const headingText = "Blog";
-const PER_PAGE = 6;
-const MAX_SUMMARY_LENGTH = 150;
-const MAX_TITLE_LENGTH = 50;
+const PER_PAGE = 5;
+const MAX_SUMMARY_LENGTH = 190;
+const MAX_TITLE_LENGTH = 80;
 
 const truncateText = (text: string, maxLength: number) => {
   if (text.length <= maxLength) return text;
@@ -94,117 +94,107 @@ const Blog = ({ blogArticles }: BlogArticlesProps) => {
         ))}
       </motion.h1>
 
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 font-semibold relative z-20">
+      <div key={page} className="relative z-20 mt-12 grid gap-8">
         {paginatedBlogArticles.map((article, idx) => (
-          <motion.article
+          <motion.div
             key={article._id}
-            initial={{ y: 40, opacity: 0 }}
-            animate={inView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.4, ease: "easeOut", delay: idx * 0.08 }}
+            initial={{ x: idx % 2 === 0 ? -80 : 80, opacity: 0 }}
+            animate={inView ? { x: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.55, ease: "easeOut", delay: idx * 0.08 }}
             style={{ willChange: "opacity, transform" }}
-            className="
-              cursor-pointer
-              flex flex-col h-full w-full
-              bg-[#1e1d1d]
-              text-white/85
-              rounded-lg overflow-hidden
-              transition-all duration-300
-              hover:bg-[#232222]
-              active:bg-[#232222]
-                    hover:shadow-lg active:shadow-lg hover:shadow-purple-300 active:shadow-purple-300
-            "
           >
-            {/* Image container with overlay gradient */}
-            <div className="relative w-full h-48 overflow-hidden">
-              <Image
-                src={urlFor(article.image).url()}
-                alt={article.title}
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1e1d1d] to-transparent opacity-70" />
-              <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xs text-white/90 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                <FaCalendarDays size={12} />
-                <span>{formatFullDate(article.publishedAt)}</span>
-              </div>
-            </div>
+            <Link href={article.link} target="_blank" rel="noopener noreferrer">
+              <article className="group grid cursor-pointer gap-5 overflow-hidden rounded-lg border border-white/10 bg-white/5 p-5 text-white/85 shadow-[0_18px_50px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-white/25 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-300 active:bg-white/10 active:shadow-lg active:shadow-purple-300 md:grid-cols-[22rem_1fr] md:items-stretch">
+                <div className="relative min-h-56 overflow-hidden rounded-lg bg-[#111] md:min-h-52">
+                  <Image
+                    src={urlFor(article.image).url()}
+                    alt={article.title}
+                    fill
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 22rem"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+                </div>
 
-            {/* Content section */}
-            <div className="flex flex-col gap-4 p-6">
-              <h2
-                className="text-xl font-bold tracking-tight line-clamp-2"
-                title={article.title}
-              >
-                {truncateText(article.title, MAX_TITLE_LENGTH)}
-              </h2>
+                <div className="flex flex-col justify-between gap-8">
+                  <div className="grid gap-4">
+                    <div className="flex items-center gap-2 text-sm text-white/55">
+                      <FaCalendarDays size={14} />
+                      <span>{formatFullDate(article.publishedAt)}</span>
+                    </div>
 
-              <p className="text-sm text-gray-300 line-clamp-3">
-                {truncateText(article.summary, MAX_SUMMARY_LENGTH)}
-              </p>
+                    <h2
+                      className="text-2xl font-bold leading-tight tracking-tight text-white"
+                      title={article.title}
+                    >
+                      {truncateText(article.title, MAX_TITLE_LENGTH)}
+                    </h2>
 
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`${article.link}`}
-                className="mt-auto flex items-center gap-2 group"
-              >
-                <span className="text-white group-hover:underline">
-                  Read article
-                </span>
-                <motion.div whileHover={{ x: 5 }} whileTap={{ x: 5 }}>
-                  <FaArrowRight className="text-white text-sm" />
-                </motion.div>
-              </Link>
-            </div>
-          </motion.article>
+                    <p className="text-sm leading-7 text-white/70">
+                      {truncateText(article.summary, MAX_SUMMARY_LENGTH)}
+                    </p>
+                  </div>
+
+                  <div className="flex w-fit items-center gap-2 rounded-full border border-white/30 bg-white/15 px-5 py-2.5 font-semibold text-white transition duration-200 group-hover:scale-[1.03] group-hover:bg-white/25 group-active:scale-[0.98]">
+                    <span>Read article</span>
+                    <motion.span whileHover={{ x: 5 }} whileTap={{ x: 5 }}>
+                      <FaArrowRight className="text-sm" />
+                    </motion.span>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          </motion.div>
         ))}
       </div>
 
-      {/* Pagination Controls */}
-      <Pagination className="mt-12 bg-[#181818]/80 border border-[#232222] rounded-xl shadow-lg px-4 py-2 w-fit mx-auto">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={() => handlePageChange(page - 1)}
-              aria-disabled={page === 1}
-              tabIndex={page === 1 ? -1 : 0}
-              style={{
-                pointerEvents: page === 1 ? "none" : undefined,
-                opacity: page === 1 ? 0.5 : 1,
-              }}
-              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
-            />
-          </PaginationItem>
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <PaginationItem key={i}>
-              <PaginationLink
-                isActive={page === i + 1}
-                onClick={() => handlePageChange(i + 1)}
-                href="#"
-                className={`!bg-transparent !text-white hover:!bg-[#232222] transition ${
-                  page === i + 1
-                    ? "!border-white !text-white !bg-[#232222]"
-                    : ""
-                }`}
-              >
-                {i + 1}
-              </PaginationLink>
+      {totalPages > 1 && (
+        <Pagination className="mt-12 bg-[#181818]/80 border border-[#232222] rounded-xl shadow-lg px-4 py-2 w-fit mx-auto">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => handlePageChange(page - 1)}
+                aria-disabled={page === 1}
+                tabIndex={page === 1 ? -1 : 0}
+                style={{
+                  pointerEvents: page === 1 ? "none" : undefined,
+                  opacity: page === 1 ? 0.5 : 1,
+                }}
+                className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
+              />
             </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => handlePageChange(page + 1)}
-              aria-disabled={page === totalPages}
-              tabIndex={page === totalPages ? -1 : 0}
-              style={{
-                pointerEvents: page === totalPages ? "none" : undefined,
-                opacity: page === totalPages ? 0.5 : 1,
-              }}
-              className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <PaginationItem key={i}>
+                <PaginationLink
+                  isActive={page === i + 1}
+                  onClick={() => handlePageChange(i + 1)}
+                  href="#"
+                  className={`!bg-transparent !text-white hover:!bg-[#232222] transition ${
+                    page === i + 1
+                      ? "!border-white !text-white !bg-[#232222]"
+                      : ""
+                  }`}
+                >
+                  {i + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => handlePageChange(page + 1)}
+                aria-disabled={page === totalPages}
+                tabIndex={page === totalPages ? -1 : 0}
+                style={{
+                  pointerEvents: page === totalPages ? "none" : undefined,
+                  opacity: page === totalPages ? 0.5 : 1,
+                }}
+                className="!bg-transparent cursor-pointer !text-white hover:!bg-[#232222] transition"
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
     </section>
   );
 };
