@@ -50,7 +50,7 @@ const Projects = ({ projects }: ProjectsProps) => {
               ease: "easeOut",
               delay: idx * 0.08,
             }}
-            className="group grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 text-white/85 shadow-[0_18px_50px_rgba(0,0,0,0.12)] transition-colors hover:border-white/25 hover:bg-white/10 lg:grid-cols-[1fr_1.05fr] lg:items-stretch"
+            className="group grid cursor-pointer gap-6 rounded-lg border border-white/10 bg-white/5 p-6 text-white/85 shadow-[0_18px_50px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-white/25 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-300 active:bg-white/10 active:shadow-lg active:shadow-purple-300 lg:grid-cols-[1fr_1.05fr] lg:items-stretch"
           >
             <div className="order-2 flex flex-col justify-between gap-8 lg:order-1">
               <div className="grid gap-4">

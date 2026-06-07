@@ -90,7 +90,7 @@ const SingleProject = ({ project }: SingleProjectProps) => {
                   alt: `${project.title} screenshot ${idx + 1}`,
                 })
               }
-              className={`relative aspect-video overflow-hidden rounded-lg border border-white/10 bg-[#080808] text-left shadow-lg transition-shadow hover:shadow-purple-300/20 md:aspect-auto md:h-full ${
+              className={`relative aspect-video cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-[#080808] text-left shadow-lg transition-all duration-300 hover:border-white/25 hover:shadow-purple-300/30 active:shadow-purple-300/30 md:aspect-auto md:h-full ${
                 idx === 0
                   ? "md:col-start-1 md:row-span-2 md:row-start-1"
                 : idx === 1

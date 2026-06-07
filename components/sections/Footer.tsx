@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
           <div className="grid gap-6">
             <Link href="/">
-              <Image src="/33.png" alt="Nugar.dev" width={80} height={80} />
+              <Image src="/33.png" loading="eager" alt="Nugar.dev" width={80} height={80} />
             </Link>
             <span className="text-sm text-white/50">
               ©{currentYear} 33™. All Rights Reserved.
