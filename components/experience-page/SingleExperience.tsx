@@ -35,17 +35,17 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
             </Link>
 
             <motion.div
-              className="flex h-20 w-20 items-center justify-center rounded-lg border border-white/10 bg-white/5"
+              className="flex h-32 w-32 items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 1.08 }}
             >
               <Image
                 src={urlFor(experience.image).url()}
                 alt={experience.company}
-                width={100}
-                height={100}
+                width={200}
+                height={200}
                 loading="eager"
-                className="max-h-14 object-contain"
+                className="max-h-28 max-w-28 object-contain md:max-h-32 md:max-w-32"
                 style={{ width: "auto", height: "auto" }}
               />
             </motion.div>
