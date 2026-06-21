@@ -1,10 +1,10 @@
 import { Project } from "../types/project";
-import { client } from "./sanity";
 import { projectQuery, singleProjectQuery } from "../hooks/useProject";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const getProjects = async (): Promise<Project[]> => {
   try {
-    const projects = await client.fetch<Project[]>(projectQuery);
+    const { data: projects } = await sanityFetch({ query: projectQuery });
     // console.log("Fetched projects:", projects);
     return projects;
   } catch (error) {
@@ -16,8 +16,9 @@ export const getProjects = async (): Promise<Project[]> => {
 export const getProjectById = async (id: string): Promise<Project | null> => {
   if (!id) return null;
   try {
-    const project = await client.fetch<Project | null>(singleProjectQuery, {
-      id,
+    const { data: project } = await sanityFetch({
+      query: singleProjectQuery,
+      params: { id },
     });
     // console.log("Fetched project by ID:", project);
     return project;

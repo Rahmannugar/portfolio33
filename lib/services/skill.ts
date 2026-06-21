@@ -1,10 +1,10 @@
 import { Skill } from "../types/skill";
 import { skillQuery } from "../hooks/useSkill";
-import { client } from "./sanity";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export const getSkills = async (): Promise<Skill[]> => {
   try {
-    const skills = await client.fetch<Skill[]>(skillQuery);
+    const { data: skills } = await sanityFetch({ query: skillQuery });
     // console.log("Fetched skills:", skills);
     return skills;
   } catch (error) {

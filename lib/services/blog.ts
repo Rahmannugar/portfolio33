@@ -1,10 +1,10 @@
 import { Blog } from "../types/blog";
-import { client } from "./sanity";
+import { sanityFetch } from "@/sanity/lib/live";
 import { blogQuery } from "../hooks/useBlog";
 
 export const getBlog = async (): Promise<Blog[]> => {
   try {
-    const blogs = await client.fetch<Blog[]>(blogQuery);
+    const { data: blogs } = await sanityFetch({ query: blogQuery });
     // console.log("Fetched blogs:", blogs);
     return blogs;
   } catch (error) {

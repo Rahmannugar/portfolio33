@@ -1,10 +1,12 @@
 import { Experience } from "../types/experience";
-import { client } from "./sanity";
+import { sanityFetch } from "@/sanity/lib/live";
 import { experienceQuery, singleExperienceQuery } from "../hooks/useExperience";
 
 export const getExperience = async (): Promise<Experience[]> => {
   try {
-    const experiences = await client.fetch<Experience[]>(experienceQuery);
+    const { data: experiences } = await sanityFetch({
+      query: experienceQuery,
+    });
     // console.log("Fetched experiences:", experiences);
     return experiences;
   } catch (error) {
@@ -18,10 +20,10 @@ export const getExperienceById = async (
 ): Promise<Experience | null> => {
   if (!id) return null;
   try {
-    const experience = await client.fetch<Experience | null>(
-      singleExperienceQuery,
-      { id },
-    );
+    const { data: experience } = await sanityFetch({
+      query: singleExperienceQuery,
+      params: { id },
+    });
     // console.log("Fetched experience by ID:", experience);
     return experience;
   } catch (error) {

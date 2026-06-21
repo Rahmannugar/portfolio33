@@ -7,6 +7,7 @@ import { Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import LayoutClient from "./LayoutClient";
 import Background from "@/components/custom-ui/background";
+import { SanityLive } from "@/sanity/lib/live";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
         <Background />
         <LoadingProvider>
           <LayoutClient>{children}</LayoutClient>
+          <SanityLive />
           <SpeedInsights />
           <Analytics />
         </LoadingProvider>
