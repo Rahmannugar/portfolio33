@@ -72,7 +72,7 @@ const Hero = () => {
           <Typewriter
             options={{
               strings: [
-                "Software Engineer building scalable, high-performance systems with a focus on clean architecture, performance, and long-term maintainability.",
+                "Software Engineer building scalable systems with a focus on clean architecture and long-term maintainability.",
               ],
               autoStart: true,
               loop: false,
