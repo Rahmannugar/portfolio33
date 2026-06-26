@@ -1,9 +1,9 @@
 import Blog from "@/components/blog-page/Blog";
 import { getBlog } from "@/lib/services/blog";
 
-const blogArticles = await getBlog();
-
 const BlogPage = async () => {
+  const blogArticles = await getBlog();
+
   return (
     <main>
       <Blog blogArticles={blogArticles} />
