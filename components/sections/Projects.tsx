@@ -90,6 +90,7 @@ const Projects = ({ projects }: ProjectsProps) => {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link
                   href={`/projects/${project._id}`}
+                  prefetch={false}
                   className="flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/15 px-5 py-2.5 font-semibold text-white transition duration-200 hover:scale-[1.03] hover:bg-white/25 active:scale-[0.98]"
                 >
                   <FaCode className="text-xs" />
