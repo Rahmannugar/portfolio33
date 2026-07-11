@@ -1,15 +1,14 @@
 import { Experience } from "../types/experience";
-import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import { experienceQuery, singleExperienceQuery } from "../hooks/useExperience";
 
 export const getExperience = async (): Promise<Experience[]> => {
   try {
-    const { data: experiences } = await sanityFetch({
-      query: experienceQuery,
-    });
-    // console.log("Fetched experiences:", experiences);
-    return experiences;
+    return await client.fetch<Experience[]>(
+      experienceQuery,
+      {},
+      { cache: "no-store" },
+    );
   } catch (error) {
     console.error("Error fetching experiences:", error);
     return [];
@@ -21,14 +20,11 @@ export const getExperienceById = async (
 ): Promise<Experience | null> => {
   if (!id) return null;
   try {
-    const experience = await client
-      .withConfig({ useCdn: false })
-      .fetch<Experience | null>(
-        singleExperienceQuery,
-        { id },
-        { cache: "no-store" },
-      );
-    // console.log("Fetched experience by ID:", experience);
+    const experience = await client.fetch<Experience | null>(
+      singleExperienceQuery,
+      { id },
+      { cache: "no-store" },
+    );
     return experience;
   } catch (error) {
     console.error("Error fetching experience by ID:", error);
