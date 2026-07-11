@@ -139,6 +139,7 @@ const Experience = ({ experiences }: ExperienceProps) => {
 
             <Link
               href={`/experience/${exp._id}`}
+              prefetch={false}
               className="flex justify-start lg:justify-end"
             >
               <motion.button

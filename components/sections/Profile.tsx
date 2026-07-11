@@ -53,9 +53,9 @@ const Profile = () => {
         >
           <p className="text-xl font-semibold leading-relaxed md:text-2xl">
             I'm Abdulrahmon Adenuga, a Software Engineer specializing in
-            building applications across the stack. I'm experienced in designing
-            backend systems and user interfaces, with a focus on delivering
-            well-engineered software.
+            building applications across the stack. I'm experienced in
+            engineering backend systems and designing user interfaces, with a
+            focus on delivering well-engineered software.
           </p>
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
             I primarily work with TypeScript, using React on the frontend, and
