@@ -18,6 +18,15 @@ export const experienceType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "companyUrl",
+      title: "Company Website",
+      type: "url",
+      validation: (rule) =>
+        rule.uri({
+          scheme: ["http", "https"],
+        }),
+    }),
+    defineField({
       name: "image",
       title: "Company Logo",
       type: "image",

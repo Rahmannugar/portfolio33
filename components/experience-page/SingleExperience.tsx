@@ -8,6 +8,7 @@ import { urlFor } from "@/lib/services/sanity";
 import Image from "next/image";
 import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 import { FaArrowLeft, FaBriefcase } from "react-icons/fa";
+import CompanyLink from "../custom-ui/company-link";
 
 interface SingleExperienceProps {
   experience: Experience;
@@ -56,7 +57,10 @@ const SingleExperience = ({ experience }: SingleExperienceProps) => {
               {experience.position}
             </h1>
             <h2 className="text-xl font-semibold text-white/70">
-              {experience.company}
+              <CompanyLink
+                company={experience.company}
+                companyUrl={experience.companyUrl}
+              />
             </h2>
           </div>
         </div>

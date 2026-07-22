@@ -2,6 +2,7 @@ export interface Experience {
   _id: string;
   position: string;
   company: string;
+  companyUrl?: string;
   image: string;
   location: string;
   startDate: string;

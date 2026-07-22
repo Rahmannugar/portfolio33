@@ -10,6 +10,7 @@ import { urlFor } from "@/lib/services/sanity";
 import { formatMonthYear } from "@/lib/utils/dateFormatter";
 import { FaCalendarDays, FaLocationDot } from "react-icons/fa6";
 import { FaBriefcase } from "react-icons/fa";
+import CompanyLink from "../custom-ui/company-link";
 
 interface ExperienceProps {
   experiences: Experience[];
@@ -117,7 +118,12 @@ const Experience = ({ experiences }: ExperienceProps) => {
                 <h2 className="text-2xl font-bold leading-tight text-white md:text-3xl">
                   {exp.position}
                 </h2>
-                <h2 className="mt-1 text-lg text-white/70">{exp.company}</h2>
+                <h2 className="mt-1 text-lg text-white/70">
+                  <CompanyLink
+                    company={exp.company}
+                    companyUrl={exp.companyUrl}
+                  />
+                </h2>
               </div>
               <div className="flex flex-col gap-2 text-sm text-white/60 sm:flex-row sm:items-center sm:gap-5">
                 <h2 className="flex items-center gap-2">

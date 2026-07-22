@@ -58,10 +58,9 @@ const Profile = () => {
             focus on delivering well-engineered software.
           </p>
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
-            I primarily work with TypeScript, using React on the frontend, and
-            Node.js for backend systems, alongside PostgreSQL for data storage.
-            I care about writing clear, maintainable code and building systems
-            that remain stable as they grow.
+            I primarily work with TypeScript and Golang; I care about writing
+            clear, maintainable code and building systems that remain stable as
+            they grow.
           </p>
 
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
