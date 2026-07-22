@@ -13,7 +13,7 @@ const CompanyLink = ({ company, companyUrl }: CompanyLinkProps) => {
       href={companyUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+      className="underline decoration-purple-300 underline-offset-4 transition-colors hover:text-white"
     >
       {company}
     </Link>
