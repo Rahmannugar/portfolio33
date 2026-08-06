@@ -5,11 +5,8 @@ export interface Project {
   description: string;
   highlights: string[];
   link: string;
-  images: string[];
+  images?: string[];
   technologies: string[];
-  startDate: string;
-  currentlyWorking: boolean;
-  endDate: string;
   _createdAt: string;
   _updatedAt: string;
 }

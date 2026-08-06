@@ -74,7 +74,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${spaceGrotesk.className} antialiased`}>
-        <Background />
+        {/* <Background /> */}
         <LoadingProvider>
           <LayoutClient>{children}</LayoutClient>
           <SpeedInsights />

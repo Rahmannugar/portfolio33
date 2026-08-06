@@ -3,7 +3,6 @@
 import { Project } from "@/lib/types/project";
 import {
   FaArrowLeft,
-  FaCalendarDay,
   FaExternalLinkAlt,
   FaTimes,
 } from "react-icons/fa";
@@ -11,7 +10,6 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/lib/services/sanity";
-import { formatMonthYear } from "@/lib/utils/dateFormatter";
 import { useState } from "react";
 
 interface SingleProjectProps {
@@ -46,16 +44,6 @@ const SingleProject = ({ project }: SingleProjectProps) => {
             <h1 className="text-4xl font-bold leading-none text-white md:text-5xl">
               {project.title}
             </h1>
-
-            <div className="flex items-center gap-2 text-sm text-white/60">
-              <FaCalendarDay />
-              <span>
-                {formatMonthYear(project.startDate)} –{" "}
-                {project.currentlyWorking
-                  ? "Present"
-                  : formatMonthYear(project.endDate)}
-              </span>
-            </div>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -79,42 +67,42 @@ const SingleProject = ({ project }: SingleProjectProps) => {
 
         <div className="grid gap-4 md:grid-cols-[1.25fr_0.85fr] md:grid-rows-[16rem_7rem_13rem] xl:grid-rows-[18rem_8rem_15rem]">
           {heroImages.map((img, idx) => (
-            <motion.button
-              type="button"
-              key={`${project.title}-hero-${idx}`}
-              whileHover={{ y: -4, scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              onClick={() =>
-                setActiveImage({
-                  src: urlFor(img).url(),
-                  alt: `${project.title} screenshot ${idx + 1}`,
-                })
-              }
-              className={`relative aspect-video cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-[#080808] text-left shadow-lg transition-all duration-300 hover:border-white/25 hover:shadow-purple-300/30 active:shadow-purple-300/30 md:aspect-auto md:h-full ${
-                idx === 0
-                  ? "md:col-start-1 md:row-span-2 md:row-start-1"
-                : idx === 1
-                    ? "md:col-start-2 md:row-start-1"
-                    : idx === 2
-                      ? "md:col-start-2 md:row-span-2 md:row-start-2"
-                      : "md:col-start-1 md:row-start-3"
-              }`}
-            >
-              <Image
-                src={urlFor(img).url()}
-                alt={`${project.title} screenshot ${idx + 1}`}
-                fill
-                loading={idx === 0 ? "eager" : "lazy"}
-                className="object-cover"
-                sizes={
-                  idx === 0
-                    ? "(max-width: 1024px) 100vw, 34vw"
-                    : idx === 3
-                      ? "(max-width: 1024px) 100vw, 56vw"
-                      : "(max-width: 1024px) 100vw, 22vw"
+              <motion.button
+                type="button"
+                key={`${project.title}-hero-${idx}`}
+                whileHover={{ y: -4, scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                onClick={() =>
+                  setActiveImage({
+                    src: urlFor(img).url(),
+                    alt: `${project.title} screenshot ${idx + 1}`,
+                  })
                 }
-              />
-            </motion.button>
+                className={`relative aspect-video cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-[#080808] text-left shadow-lg transition-all duration-300 hover:border-white/25 hover:shadow-purple-300/30 active:shadow-purple-300/30 md:aspect-auto md:h-full ${
+                  idx === 0
+                    ? "md:col-start-1 md:row-span-2 md:row-start-1"
+                    : idx === 1
+                      ? "md:col-start-2 md:row-start-1"
+                      : idx === 2
+                        ? "md:col-start-2 md:row-span-2 md:row-start-2"
+                        : "md:col-start-1 md:row-start-3"
+                }`}
+              >
+                <Image
+                  src={urlFor(img).url()}
+                  alt={`${project.title} screenshot ${idx + 1}`}
+                  fill
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  className="object-cover"
+                  sizes={
+                    idx === 0
+                      ? "(max-width: 1024px) 100vw, 34vw"
+                      : idx === 3
+                        ? "(max-width: 1024px) 100vw, 56vw"
+                        : "(max-width: 1024px) 100vw, 22vw"
+                  }
+                />
+              </motion.button>
           ))}
         </div>
       </div>

@@ -7,9 +7,6 @@ export const projectQuery = `*[_type == "project"]| order(_createdAt desc){
   link,
   images,
   technologies,
-  startDate,
-  endDate,
-  currentlyWorking,
   _createdAt,
   _updatedAt
 }`;
@@ -23,9 +20,6 @@ export const singleProjectQuery = `*[_type == "project" && _id == $id][0]{
   link,
   images,
   technologies,
-  startDate,
-  endDate,
-  currentlyWorking,
   _createdAt,
   _updatedAt
 }`;

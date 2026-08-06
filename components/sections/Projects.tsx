@@ -5,8 +5,7 @@ import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
 import { urlFor } from "@/lib/services/sanity";
-import { FaCalendarDay, FaCode, FaExternalLinkAlt } from "react-icons/fa";
-import { formatMonthYear } from "@/lib/utils/dateFormatter";
+import { FaCode, FaExternalLinkAlt } from "react-icons/fa";
 import Link from "next/link";
 const heading = "Projects";
 interface ProjectsProps {
@@ -70,16 +69,6 @@ const Projects = ({ projects }: ProjectsProps) => {
               </div>
 
               <div className="grid gap-4">
-                <div className="flex items-center gap-2 text-sm text-white/60">
-                  <FaCalendarDay />
-                  <span>
-                    {formatMonthYear(project.startDate)} –{" "}
-                    {project.currentlyWorking
-                      ? "Present"
-                      : formatMonthYear(project.endDate)}
-                  </span>
-                </div>
-
                 {project.description && (
                   <p className="max-w-xl text-sm leading-7 text-white/75 md:text-base">
                     {project.description}
