@@ -58,7 +58,7 @@ const Profile = () => {
             focus on delivering well-engineered software.
           </p>
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
-            I primarily work with TypeScript and Golang; I care about writing
+            I primarily work with Go and Typescript; I care about writing
             clear, maintainable code and building systems that remain stable as
             they grow.
           </p>
