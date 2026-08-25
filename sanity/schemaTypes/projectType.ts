@@ -6,6 +6,31 @@ export const projectType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "order",
+      title: "Display order",
+      description: "Required position for this project. Lower numbers appear first.",
+      type: "number",
+      validation: (rule) =>
+        rule
+          .required()
+          .integer()
+          .min(1)
+          .custom(async (value, context) => {
+            if (typeof value !== "number") return true;
+
+            const client = context.getClient({ apiVersion: "2025-10-06" });
+            const duplicateCount = await client.fetch<number>(
+              `count(*[_type == "project" && order == $order && _id != $id])`,
+              {
+                order: value,
+                id: context.document?._id,
+              }
+            );
+
+            return duplicateCount === 0 || "Each project must have a unique display order.";
+          }),
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
