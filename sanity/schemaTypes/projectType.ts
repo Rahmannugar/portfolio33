@@ -19,11 +19,16 @@ export const projectType = defineType({
             if (typeof value !== "number") return true;
 
             const client = context.getClient({ apiVersion: "2025-10-06" });
+            const documentId = context.document?._id;
+            const baseDocumentId = documentId?.replace(/^drafts\./, "");
+            const currentDocumentIds = baseDocumentId
+              ? [baseDocumentId, `drafts.${baseDocumentId}`]
+              : [];
             const duplicateCount = await client.fetch<number>(
-              `count(*[_type == "project" && order == $order && _id != $id])`,
+              `count(*[_type == "project" && order == $order && !(_id in $currentDocumentIds)])`,
               {
                 order: value,
-                id: context.document?._id,
+                currentDocumentIds,
               }
             );
 
