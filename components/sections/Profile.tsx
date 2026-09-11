@@ -1,9 +1,9 @@
 "use client";
 
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 import ProfileCard from "../custom-ui/profile-card/profile-card";
 import { handleContactClick } from "./Hero";
-import { useRef } from "react";
-import { motion, useInView } from "motion/react";
 
 const heading = "About Me";
 
@@ -52,13 +52,12 @@ const Profile = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="text-xl font-semibold leading-relaxed md:text-2xl">
-            I'm Abdulrahmon Adenuga, a Software Engineer specializing in
-            building applications across the stack. I'm experienced in
-            engineering backend systems and designing user interfaces, with a
-            focus on delivering well-engineered software.
+        I'm Abdulrahmon Adenuga, a Software Engineer specializing in backend systems,
+        with experience building production applications using Go, TypeScript, and Node.js.
+        I’ve worked on distributed systems, event-driven architectures, and data-intensive applications, while also building products across the stack.
           </p>
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
-            I primarily work with Go and Typescript; I care about writing
+            I care about writing
             clear, maintainable code and building systems that remain stable as
             they grow.
           </p>
