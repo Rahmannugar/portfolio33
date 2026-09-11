@@ -52,9 +52,7 @@ const Profile = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="text-xl font-semibold leading-relaxed md:text-2xl">
-        I'm Abdulrahmon Adenuga, a Software Engineer specializing in backend systems,
-        with experience building production applications using Go, TypeScript, and Node.js.
-        I’ve worked on distributed systems, event-driven architectures, and data-intensive applications, while also building products across the stack.
+        I'm Abdulrahmon Adenuga, a Software Engineer specializing in backend systems, with experience building production applications using Go, TypeScript, and Node.js. I’ve worked on distributed systems and data-intensive applications, while also building applications across the stack.
           </p>
           <p className="max-w-3xl text-base font-medium leading-8 text-white/75 md:text-lg">
             I care about writing
