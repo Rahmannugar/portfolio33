@@ -1,6 +1,5 @@
-export const projectQuery = `*[_type == "project"]| order(order asc, _createdAt asc){
+export const projectQuery = `*[_type == "project"]| order(orderRank asc, _createdAt asc){
   _id,
-  order,
   title,
   previewImage,
   description,
@@ -14,7 +13,6 @@ export const projectQuery = `*[_type == "project"]| order(order asc, _createdAt 
 
 export const singleProjectQuery = `*[_type == "project" && _id == $id][0]{
   _id,
-  order,
   title,
   previewImage,
   description,
